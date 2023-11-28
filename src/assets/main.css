@@ -1,0 +1,41 @@
+body {
+    text-align: center;
+   
+}
+
+table {
+    margin: 0 auto;
+    border: 1px solid black;
+    border-collapse: collapse;
+    table-layout: fixed;
+  
+}
+
+tr:nth-child(even){
+   background-color: #f2f2f2
+}
+tr:nth-child(odd){
+   background-color: #f2f2f2
+}
+table th{
+    background-color: #B9D9EB;
+}
+
+td, th {
+    text-align: center;
+    border: 1px solid black;
+   padding:6px;
+}
+
+td {
+    vertical-align: middle;
+}
+
+.comment-cell {
+    padding:4px;
+    max-height: 100px;
+    max-width:600px;
+    overflow-y: auto;
+    white-space: normal;
+    word-wrap: break-word; 
+}
