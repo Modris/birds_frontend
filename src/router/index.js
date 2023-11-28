@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from "vue-router";
 import MainPage from '../components/MainPage.vue'
-import FormA from '../components/formA.vue'
+import Putns from '../components/putns.vue'
+import Saraksts from  '../components/Saraksts.vue'
 import App from  '../App.vue'
 
 const routes = [
@@ -10,9 +11,13 @@ const routes = [
     },
     {
         path: "/putns/:id",
-        component: FormA
+        component: Putns
       },
 
+      {
+        path: "/saraksts",
+        component: Saraksts
+      },
 
 ];
 

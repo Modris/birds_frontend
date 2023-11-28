@@ -1,32 +1,30 @@
 <template>
-<p> test </p>
-<router-link to="/" tag="button"> Go To Main Page </router-link>
 <br> <br> 
 
   <table>
     <tr> 	
-			<th> Vārds </th>
-			<th> Angliski </th>
-			<th> Latīniski </th>
+			<th class="padded"> Vārds </th>
+			<th class="padded"> Angliski </th>
+			<th class="padded"> Latīniski </th>
 		</tr>
     <tr>
-        <td v-if="listItems"> {{ listItems.name }} </td>
-        <td v-if="listItems"> {{ listItems.englishName }} </td>
-        <td v-if="listItems"> {{ listItems.latinName }} </td>
+        <td class="padded" v-if="listItems"> {{ listItems.name }} </td>
+        <td class="padded" v-if="listItems"> {{ listItems.englishName }} </td>
+        <td class="padded" v-if="listItems"> {{ listItems.latinName }} </td>
     </tr>
   </table>
 
   <br> 
   <table>
     <tr> 	
-			<th> Interesanti fakti </th>
+			<th class="padded" > Interesanti fakti </th>
       
 		</tr>
     <tr>
-        <td class = "comment-cell" v-if="listItems"> {{ listItems.funFact }} </td>
+        <td class = "comment-cell padded" v-if="listItems"> {{ listItems.funFact }} </td>
     </tr>
     <tr> 
-        <td class = "comment-cell" v-if="listItems"> {{ listItems.comment }} </td>
+        <td class = "comment-cell padded" v-if="listItems"> {{ listItems.comment }} </td>
     </tr>
   </table>
 
