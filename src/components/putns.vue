@@ -1,6 +1,5 @@
 <template>
-<br> <br> 
-
+<br> 
   <table>
     <tr> 	
 			<th class="padded"> Vārds </th>
@@ -14,6 +13,8 @@
     </tr>
   </table>
 
+  <br> 
+  <PutnsDynamic /> 
   <br> 
   <table>
     <tr> 	
@@ -36,6 +37,7 @@
 
 import { ref } from 'vue';
 import { useRoute} from 'vue-router';
+import PutnsDynamic from  '../components/PutnsDynamic.vue'
 
 const listItems = ref({});
 
