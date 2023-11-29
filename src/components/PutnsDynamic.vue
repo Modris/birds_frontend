@@ -14,13 +14,17 @@ putns1-40 folder. -->
 
 <script setup>
 
-import { ref, onMounted } from 'vue';
+import { ref, defineEmits, onMounted } from 'vue';
 import { useRoute} from 'vue-router';
 
-const emit = defineEmits('image-to-parent')
+
+const emit = defineEmits(['image-to-parent'])
+
 onMounted( () => {
     emit('image-to-parent', mainURL, firstURL, secondURL, thirdURL)
 })
+emits: ['image-to-parent']
+
 const route = useRoute();
 const birdId = route.params.id;
 
