@@ -17,6 +17,7 @@
 <br>
 <span>  Latvijas Ornitoloģijas biedrība:  </span> <a href="https://www.lob.lv/">lob.lv</a>
 <br>
+
 </template>
 
 <script setup>

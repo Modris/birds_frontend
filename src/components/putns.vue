@@ -14,8 +14,12 @@
   </table>
 
   <br> 
-  <PutnsDynamic /> 
-  <br> 
+ 
+  <PutnsDynamic @image-to-parent="handleImageFromChild">
+  </PutnsDynamic>
+  <img :src="mainURL" />
+
+<br> 
   <table>
     <tr> 	
 			<th class="padded" > Interesanti fakti </th>
@@ -29,8 +33,15 @@
     </tr>
   </table>
 
+  <br> 
 
 
+  <img :src="firstURL" />
+  <br> 
+  <img :src="secondURL" />
+  <br> 
+  <img :src="thirdURL" />
+  <br> 
 </template>
 
 <script setup>
@@ -38,6 +49,20 @@
 import { ref } from 'vue';
 import { useRoute} from 'vue-router';
 import PutnsDynamic from  '../components/PutnsDynamic.vue'
+
+let mainURL = "";
+let firstURL = "";
+let secondURL = "";
+let thirdURL = "";
+
+
+function handleImageFromChild( childMainURL, childFirstURL, childSecondURL, childThirdURLL){
+  mainURL =  mainURL+childMainURL;
+  firstURL = firstURL+childFirstURL;
+  secondURL = secondURL+childSecondURL;
+  thirdURL = thirdURL+childThirdURLL;
+}
+
 
 const listItems = ref({});
 
@@ -61,6 +86,9 @@ getData();
 
 <style>
 
-
+img {
+    height: 400px; 
+    width: 600px;
+}
 
 </style>

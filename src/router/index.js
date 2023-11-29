@@ -2,7 +2,7 @@ import { createRouter, createWebHistory } from "vue-router";
 import MainPage from '../components/MainPage.vue'
 import Putns from '../components/putns.vue'
 import Saraksts from  '../components/Saraksts.vue'
-import App from  '../App.vue'
+import PutnsDynamic from '../components/putnsDynamic.vue'
 
 const routes = [
     {
@@ -11,7 +11,7 @@ const routes = [
     },
     {
         path: "/putns/:id",
-        component: Putns
+        component:  Putns 
       },
 
       {

@@ -38,4 +38,6 @@
 38	Zaļžubīte
 39	Žubīte
 40	Dzeltenā stērste
-	
+
+https://squoosh.app/editor used as image resize and compression tool and convert images
+to .webp format.
