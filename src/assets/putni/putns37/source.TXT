@@ -25,3 +25,9 @@ main.jpg
 	7 Aug 2021 
 	Cēsu iela
 	Daugavpils, Latvia
+	
+audio.mp3
+	https://macaulaylibrary.org/asset/476421241
+	Patrick Franke 
+	25 Jun 2022 
+	Prignitz, Germany 
