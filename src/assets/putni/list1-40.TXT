@@ -1,0 +1,41 @@
+1	Baltā Cielava
+2	Paugurknābja gulbis
+3	Ziemeļu gulbis
+4	Meža pīle
+5	Ķīvīte
+6	Zivju gārnis
+7	Dzērve
+8	Sudrabkaija
+9	Lielais ķīris
+10	Peļu klijāns
+11	Vistu vanags
+12	Dižraibais dzenis
+13	Melnā dzilna
+14	Lauku balodis
+15	Pilsētas balodis
+16	Mājas zvirbulis
+17	Lauku zvirbulis
+18	Bezdelīga
+19	Mājas čurkste
+20	Svīre
+21	Melnais mežastrazds
+22	Sarkanrīklīte
+23	Svilpis
+24	Paceplītis
+25	Zeltgalvītis
+26	Zilzīlīte
+27	Lielā zīlīte
+28	Erickiņš
+29	Melnais mušķērājs
+30	Dzilnītis
+31	Mājas strazds
+32	Sīlis
+33	Pelēkā vārna
+34	Krauķis
+35	Krauklis
+36	Žagata
+37	Brūnā čakste
+38	Zaļžubīte
+39	Žubīte
+40	Dzeltenā stērste
+	

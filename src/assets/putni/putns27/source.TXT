@@ -1,0 +1,27 @@
+main.jpg 
+	https://macaulaylibrary.org/asset/250501401
+	Andrew William 
+	17 Apr 2017 
+	Riga--Bastejkalna Park
+	Riga City, Latvia 
+	
+1.jpg 
+	https://macaulaylibrary.org/asset/312947601
+	Artur Razumov 
+	1 Mar 2021 
+	Carnikava - Gaujas grīva
+	Carnikava, Latvia 
+	
+2.jpg 
+	https://macaulaylibrary.org/asset/611004999
+	Alexey Kurochkin 
+	9 Nov 2023 
+	Mangalsala
+	Riga City, Latvia 
+	
+3.jpg 
+	https://macaulaylibrary.org/asset/235197281
+	Jurijs Silinevics 
+	19 Apr 2020 
+	Juglas mežs -- Piķurga
+	Riga City, Latvia 
