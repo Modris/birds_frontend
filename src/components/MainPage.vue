@@ -18,8 +18,28 @@
 <span>  Latvijas Ornitoloģijas biedrība:  </span> <a href="https://www.lob.lv/">lob.lv</a>
 <br>
 
+
+<div class="container">
+    <div class="item box1"><p>One</p></div>
+    <div class="item box2"><p>Two</p></div>
+    <div class="item box3"><p>Three</p></div>
+    <div class="item box4"><p>Four</p></div>
+</div>
+
 </template>
 
 <script setup>
 
 </script>
+
+<style> 
+
+.container{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+}
+
+.child-item {
+  grid-column: 2 / 5;
+}
+</style>

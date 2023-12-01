@@ -14,24 +14,31 @@ putns1-40 folder. -->
 
 <script setup>
 
-import { ref, defineEmits, onMounted } from 'vue';
+import { ref, onBeforeMount } from 'vue';
 import { useRoute} from 'vue-router';
 
 
 const emit = defineEmits(['image-to-parent'])
 
-onMounted( () => {
-    emit('image-to-parent', mainURL, firstURL, secondURL, thirdURL)
+onBeforeMount( () => {
+    emit('image-to-parent', mainURL, firstURL, secondURL, thirdURL, mainURLSmall, firstURLSmall, secondURLSmall, thirdURLSmall  )
 })
 emits: ['image-to-parent']
 
 const route = useRoute();
 const birdId = route.params.id;
 
+
+
 const mainURL = "../src/assets/putni/putns"+birdId+"/main_resize_medium.webp"
 const firstURL = "../src/assets/putni/putns"+birdId+"/1_resize_medium.webp"
 const secondURL = "../src/assets/putni/putns"+birdId+"/2_resize_medium.webp"
 const thirdURL = "../src/assets/putni/putns"+birdId+"/3_resize_medium.webp"
+
+const mainURLSmall = "../src/assets/putni/putns"+birdId+"/main_resize_small.webp"
+const firstURLSmall = "../src/assets/putni/putns"+birdId+"/1_resize_small.webp"
+const secondURLSmall = "../src/assets/putni/putns"+birdId+"/2_resize_small.webp"
+const thirdURLSmall = "../src/assets/putni/putns"+birdId+"/3_resize_small.webp"
 
 </script>
 

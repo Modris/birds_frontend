@@ -1,9 +1,9 @@
 main.jpg 
-	https://macaulaylibrary.org/asset/609280627
-	Valters Videnieks
-	26 Sep 2023 
-	Pāvilosta
-	Liepaja City, Latvia 
+	https://macaulaylibrary.org/asset/576200251
+	Holger Teichmann
+	11 May 2023 
+	Nida 
+	Klaipedos Apskritis, Lithuania 
 	
 1.jpg 
 	https://macaulaylibrary.org/asset/32192131
@@ -13,10 +13,11 @@ main.jpg
 	Engure, Latvia 
 	
 2.jpg 
-	https://macaulaylibrary.org/asset/592398211
-	Alexey Kurochkin
-	1 Jul 2023
-	Mersrags, Latvia 
+	https://macaulaylibrary.org/asset/286488691
+	Rene sun
+	15 May
+	Trakai Castle Boardwalk
+	Vilniaus Apskritis, Lithuania 
 
 3.jpg 
 	https://macaulaylibrary.org/asset/443979251

@@ -6,11 +6,11 @@ main.jpg
 	Engure, Latvia 
 	
 1.jpg 
-	https://macaulaylibrary.org/asset/611062159
-	Heidi Murphy 
-	20 Jul 2023 
-	Steistoosweg
-	Bern, Switzerland 
+	https://macaulaylibrary.org/asset/171581401
+	Stephen Gast 
+	15 Jul 2019 
+	Ventė Cape
+	Klaipedos Apskritis, Lithuania 
 
 2.jpg 
 	https://macaulaylibrary.org/asset/608693345
