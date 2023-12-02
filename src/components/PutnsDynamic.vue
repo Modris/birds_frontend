@@ -28,8 +28,6 @@ emits: ['image-to-parent']
 const route = useRoute();
 const birdId = route.params.id;
 
-
-
 const mainURL = "../src/assets/putni/putns"+birdId+"/main_resize_medium.webp"
 const firstURL = "../src/assets/putni/putns"+birdId+"/1_resize_medium.webp"
 const secondURL = "../src/assets/putni/putns"+birdId+"/2_resize_medium.webp"

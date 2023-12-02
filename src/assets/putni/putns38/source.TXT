@@ -13,6 +13,7 @@ main.jpg
 	Warminsko-mazurskie, Poland 
 	
 2.jpg 
+	https://macaulaylibrary.org/asset/25426051
 	Jurijs Silinevics
 	5 Mar 2016 
 	Liepāja -- Zirgu sala

@@ -1,6 +1,47 @@
 <template>
 <br> 
 <div >
+<!-- Teting jsonDynamic with birdId. it works. commented for tomorrow coding.
+  <div v-if="jsonDynamic != null"> 
+      <span>  Main Author: {{ jsonDynamic[0]['Author'] }}</span><br>
+      <span>  Source: {{ jsonDynamic[0]['Source'] }}</span><br>
+      <span>  Date: {{ jsonDynamic[0]['Date'] }}</span><br>
+      <span>  Location: {{ jsonDynamic[0]['Location'] }}</span><br>
+      <span>  Country: {{ jsonDynamic[0]['Country'] }}</span><br>
+      <br> <br> 
+
+      <span>  1 Author: {{ jsonDynamic[1]['Author'] }}</span><br>
+      <span>  Source: {{ jsonDynamic[1]['Source'] }}</span><br>
+      <span>  Date: {{ jsonDynamic[1]['Date'] }}</span><br>
+      <span>  Location: {{ jsonDynamic[1]['Location'] }}</span><br>
+      <span>  Country: {{ jsonDynamic[1]['Country'] }}</span><br>
+      <br> <br> 
+      <span>  2 Author: {{ jsonDynamic[2]['Author'] }}</span><br>
+      <span>  Source: {{ jsonDynamic[2]['Source'] }}</span><br>
+      <span>  Date: {{ jsonDynamic[2]['Date'] }}</span><br>
+      <span>  Location: {{ jsonDynamic[2]['Location'] }}</span><br>
+      <span>  Country: {{ jsonDynamic[2]['Country'] }}</span>
+      <br> <br> 
+      <span>  3 Author: {{ jsonDynamic[3]['Author'] }}</span> <br> 
+      <span>  Source: {{ jsonDynamic[3]['Source'] }}</span> <br>
+      <span>  Date: {{ jsonDynamic[3]['Date'] }}</span> <br>
+      <span>  Location: {{ jsonDynamic[3]['Location'] }}</span> <br>
+      <span>  Country: {{ jsonDynamic[3]['Country'] }}</span> <br>
+      <br> <br> 
+
+      <span>  Audio Author: {{ jsonDynamic[4]['Author'] }}</span> <br> 
+      <span>  Source: {{ jsonDynamic[4]['Source'] }}</span> <br>
+      <span>  Date: {{ jsonDynamic[4]['Date'] }}</span> <br>
+      <span>  Location: {{ jsonDynamic[4]['Location'] }}</span> <br>
+      <span>  Country: {{ jsonDynamic[4]['Country'] }}</span> <br>
+      <br> 
+
+  </div>
+--> 
+  <br> 
+
+  
+
   <table>
     <tr> 	
 			<th class="padded"> Vārds </th>
@@ -88,20 +129,27 @@
 
 <script setup>
 
-import { ref } from 'vue';
+import { ref, onMounted } from 'vue';
 import { useRoute} from 'vue-router';
 import PutnsDynamic from  '../components/PutnsDynamic.vue'
 
+
+const route = useRoute();
+const birdId = route.params.id;
+import jsonData from  "../assets/putni/source/source_putnsAllCompressed.json";
+
+console.log(jsonData)
+
+const jsonDynamic = jsonData[birdId];
+console.log(jsonDynamic)
 let mainURL = "";
 let firstURL = "";
 let secondURL = "";
 let thirdURL = "";
-
 let mainURLSmall = "";
 let firstURLSmall = "";
 let secondURLSmall = "";
 let thirdURLSmall = "";
-
 function handleImageFromChild( childMainURL, childFirstURL, childSecondURL, 
         childThirdURL, childMainURLSmall, childFirstURLSmall, childSecondURLSmall, childThirdURLSmall){
   mainURL += childMainURL;
@@ -115,14 +163,9 @@ function handleImageFromChild( childMainURL, childFirstURL, childSecondURL,
 
 }
 
-let is11Test = ref(false);
-let is17Test = ref(false);
-let is26Test = ref(false);
-let is36Test = ref(false);
 const listItems = ref({});
 
-const route = useRoute();
-const birdId = route.params.id;
+
 let previous = +birdId-1
 if(previous <=0){
   previous = 1;
@@ -135,18 +178,6 @@ if(next >=40){
 }
 let nextPage = "/putns/"+next
 
-if( birdId == 17){
-  is17Test = true;
-}
-if(birdId == 11){
-  is11Test = true;
-}
-if(birdId == 26){
-  is26Test = true;
-}
-if(birdId == 36){
-  is36Test = true;
-}
 
 async function getData() {
     try{
@@ -165,27 +196,6 @@ getData();
 
 <style>
 
-.imgFix1{
-  height: 600px; 
-  width: 400px;
-}
-.imgFix{
-  height: 600px; 
-  width: 480px;
-}
-.imgMain{
-  height: 750px; 
-  width: 600px;
-}
-.img {
-    height: 600px; 
-    width: 400px;
-}
-
-.imgSmall{
-  height: 450px; 
-    width: 300px;
-}
 .navButtons{
   font-size:20px;
 }

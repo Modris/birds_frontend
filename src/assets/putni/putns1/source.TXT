@@ -6,10 +6,10 @@ main.jpg
 	Dundaga, Latvia
 
 1.jpg 
-https://macaulaylibrary.org/asset/351070721
+	https://macaulaylibrary.org/asset/351070721
 	Andrejs Donecs https://search.macaulaylibrary.org/catalog?searchField=user&userId=USER1213929
 	26 Jun 2021
-	4A Biķeru iela, Dreiliņi, LV (56.952, 24.262)
+	4A Biķeru iela, Dreiliņi
 	Riga City, Latvia
 	
 2.jpg 
@@ -26,13 +26,12 @@ https://macaulaylibrary.org/asset/351070721
 	Randu pļavas -- Kuivižu tornis
 	Salacgriva, Latvia 
 
-Audio
+audio.mp3
 	https://xeno-canto.org/715927
 	Agris Celmins
 	June 10 2006
 	Penderi, Valles pagasts
 	Latvia	
 	
-More images - https://search.macaulaylibrary.org/catalog?regionCode=LV&taxonCode=whiwag 
 
 	
