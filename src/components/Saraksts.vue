@@ -4,8 +4,10 @@
 
 <div > 
 
-   <span> Meklēšana: </span> <input v-model="searchText" @input="searchTextUpdated" placeholder="pēc vārda">
-    <br><br> 
+    <div class="searchBar">
+        <span> Meklēšana: </span> <input v-model="searchText" @input="searchTextUpdated" placeholder="pēc vārda">
+    </div>
+    <br>
 
 <table >
     <tr>
@@ -112,4 +114,7 @@ table{
     overflow-x:auto;
 }
 
+.searchBar{
+    font-size:20px;
+}
 </style>

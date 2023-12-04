@@ -89,6 +89,9 @@
 
   <br> 
 
+  <div>
+    <Details > </Details> 
+  </div>
 
 
   <picture v-if="birdId == 23">
@@ -161,6 +164,7 @@
 import { ref, onMounted } from 'vue';
 import { useRoute} from 'vue-router';
 import PutnsDynamic from  '../components/PutnsDynamic.vue'
+import Details from  '../components/details.vue'
 
 
 const route = useRoute();
