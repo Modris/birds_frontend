@@ -5,11 +5,7 @@ This Component DEPENDS on Putns.vue component. More specifically the :id section
 putns1-40 folder. -->
 
 <template>
-<!-- 
-        <img name="test" :src="mainURL"/>
 
-        <img name="test2" :src="firstURL"/>
-    -->
 </template>
 
 <script setup>
@@ -21,13 +17,13 @@ import { useRoute} from 'vue-router';
 const emit = defineEmits(['image-to-parent'])
 
 onBeforeMount( () => {
-    emit('image-to-parent', mainURL, firstURL, secondURL, thirdURL, mainURLSmall, firstURLSmall, secondURLSmall, thirdURLSmall  )
+    emit('image-to-parent',audioLink, mainURL, firstURL, secondURL, thirdURL, mainURLSmall, firstURLSmall, secondURLSmall, thirdURLSmall  )
 })
 emits: ['image-to-parent']
 
 const route = useRoute();
 const birdId = route.params.id;
-
+const audioLink = "../src/assets/putni/putns"+birdId+"/audio.mp3";
 const mainURL = "../src/assets/putni/putns"+birdId+"/main_resize_medium.webp"
 const firstURL = "../src/assets/putni/putns"+birdId+"/1_resize_medium.webp"
 const secondURL = "../src/assets/putni/putns"+birdId+"/2_resize_medium.webp"

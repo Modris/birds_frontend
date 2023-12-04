@@ -1,81 +1,55 @@
 <template>
 <br> 
-<div >
-<!-- Teting jsonDynamic with birdId. it works. commented for tomorrow coding.
-  <div v-if="jsonDynamic != null"> 
-      <span>  Main Author: {{ jsonDynamic[0]['Author'] }}</span><br>
-      <span>  Source: {{ jsonDynamic[0]['Source'] }}</span><br>
-      <span>  Date: {{ jsonDynamic[0]['Date'] }}</span><br>
-      <span>  Location: {{ jsonDynamic[0]['Location'] }}</span><br>
-      <span>  Country: {{ jsonDynamic[0]['Country'] }}</span><br>
-      <br> <br> 
 
-      <span>  1 Author: {{ jsonDynamic[1]['Author'] }}</span><br>
-      <span>  Source: {{ jsonDynamic[1]['Source'] }}</span><br>
-      <span>  Date: {{ jsonDynamic[1]['Date'] }}</span><br>
-      <span>  Location: {{ jsonDynamic[1]['Location'] }}</span><br>
-      <span>  Country: {{ jsonDynamic[1]['Country'] }}</span><br>
-      <br> <br> 
-      <span>  2 Author: {{ jsonDynamic[2]['Author'] }}</span><br>
-      <span>  Source: {{ jsonDynamic[2]['Source'] }}</span><br>
-      <span>  Date: {{ jsonDynamic[2]['Date'] }}</span><br>
-      <span>  Location: {{ jsonDynamic[2]['Location'] }}</span><br>
-      <span>  Country: {{ jsonDynamic[2]['Country'] }}</span>
-      <br> <br> 
-      <span>  3 Author: {{ jsonDynamic[3]['Author'] }}</span> <br> 
-      <span>  Source: {{ jsonDynamic[3]['Source'] }}</span> <br>
-      <span>  Date: {{ jsonDynamic[3]['Date'] }}</span> <br>
-      <span>  Location: {{ jsonDynamic[3]['Location'] }}</span> <br>
-      <span>  Country: {{ jsonDynamic[3]['Country'] }}</span> <br>
-      <br> <br> 
-
-      <span>  Audio Author: {{ jsonDynamic[4]['Author'] }}</span> <br> 
-      <span>  Source: {{ jsonDynamic[4]['Source'] }}</span> <br>
-      <span>  Date: {{ jsonDynamic[4]['Date'] }}</span> <br>
-      <span>  Location: {{ jsonDynamic[4]['Location'] }}</span> <br>
-      <span>  Country: {{ jsonDynamic[4]['Country'] }}</span> <br>
-      <br> 
-
-  </div>
---> 
   <br> 
 
+ 
+      <table>
+        <tr> 	
+          <th class="padded"> Vārds </th>
+          <th class="padded"> Angliski </th>
+          <th class="padded"> Latīniski </th>
+        </tr>
+        <tr>
+            <td class="padded" v-if="listItems"> {{ listItems.name }} </td>
+            <td class="padded" v-if="listItems"> {{ listItems.englishName }} </td>
+            <td class="padded" v-if="listItems"> {{ listItems.latinName }} </td>
+        </tr>
+      </table>
+
+  <article class = "gridLayout"> 
+    <div class="gridLayout child" v-if="received === true"> 
+        <audio controls>
+        <source :src="audioLink" type="audio/mpeg">
+      Your browser does not support the audio element.
+      <source> 
+      </audio>
+    </div> 
+    <div > 
+      <table> 
+        <tr> 
+          <td> 
+              <router-link :to="{ path: previousPage}" tag="button">◀</router-link> 
+            </td>
+            <td> 
+              <router-link :to="{ path: nextPage}" tag="button">▶</router-link> 
+            </td>
+        </tr>
+      </table> 
+    </div>
+    <div> </div> <!-- empty grid -->
+    <div> </div> <!-- empty grid -->
+  </article>
   
-
-  <table>
-    <tr> 	
-			<th class="padded"> Vārds </th>
-			<th class="padded"> Angliski </th>
-			<th class="padded"> Latīniski </th>
-		</tr>
-    <tr>
-        <td class="padded" v-if="listItems"> {{ listItems.name }} </td>
-        <td class="padded" v-if="listItems"> {{ listItems.englishName }} </td>
-        <td class="padded" v-if="listItems"> {{ listItems.latinName }} </td>
-    </tr>
-  </table>
-
-  <span>   <router-link class="navButtons" :to="{ path: previousPage}" tag="button">◀</router-link>  </span>
- <router-link class="navButtons" :to="{ path: nextPage}" tag="button">▶</router-link> 
-  <table> 
-    <tr> 
-      <td class="padded"> Lapu navigācija </td>
-      <td> 
-           <router-link :to="{ path: previousPage}" tag="button">◀</router-link> 
-        </td>
-        <td> 
-          <router-link :to="{ path: nextPage}" tag="button">▶</router-link> 
-
-        </td>
-    </tr>
-  </table> 
-</div>
-  <br> 
-<br> 
+  <span> <a :href="jsonDynamic[4]['Source']"> Audio Avots. </a> 
+              {{ jsonDynamic[4]['Author'] }}.
+              {{ jsonDynamic[4]['Country'] }}
+        </span> 
+        <br><br>
 <PutnsDynamic @image-to-parent="handleImageFromChild">
-  </PutnsDynamic>
+</PutnsDynamic>
 
-  
+
 
 
 <picture>
@@ -84,6 +58,14 @@
   <img />
 </picture>
 
+<br>
+  <span>  
+       <a :href="jsonDynamic[0]['Source']"> Avots. </a> 
+       {{ jsonDynamic[0]['Author'] }}.
+       {{ jsonDynamic[0]['Country'] }}
+  </span>
+    
+  <br><br>
   <table>
     <tr> 	
 			<th class="padded" > Interesanti fakti </th>
@@ -106,22 +88,39 @@
   <source  media="(min-width: 501px)" width="600" height="400" :srcset="firstURL" decoding="async" loading="lazy"/>
   <img />
   </picture>
-
+  <br>
+  <span>  
+       <a :href="jsonDynamic[1]['Source']"> Avots. </a> 
+       {{ jsonDynamic[1]['Author'] }}.
+       {{ jsonDynamic[1]['Country'] }}
+  </span>
+  
   <br> 
 
   <picture>
   <source  media="(max-width: 500px)" width="450" height="360" :srcset="secondURLSmall" decoding="async" loading="lazy" />
   <source  media="(min-width: 501px)" width="600" height="400" :srcset="secondURL" decoding="async" loading="lazy"/>
   <img />
-
-  <br> 
-
-</picture>
+  </picture>
+  <br>
+  <span>  
+       <a :href="jsonDynamic[2]['Source']"> Avots. </a> 
+       {{ jsonDynamic[2]['Author'] }}.
+       {{ jsonDynamic[2]['Country'] }}
+  </span>
+<br>
   <picture>
   <source  media="(max-width: 500px)" width="450" height="360" :srcset="thirdURLSmall" decoding="async" loading="lazy" />
   <source  media="(min-width: 501px)" width="600" height="400" :srcset="thirdURL" decoding="async" loading="lazy"/>
   <img />
 </picture>
+
+<br>
+  <span>  
+       <a :href="jsonDynamic[3]['Source']"> Avots. </a> 
+       {{ jsonDynamic[3]['Author'] }}.
+       {{ jsonDynamic[3]['Country'] }}
+  </span>
 
 <br> 
 
@@ -138,10 +137,11 @@ const route = useRoute();
 const birdId = route.params.id;
 import jsonData from  "../assets/putni/source/source_putnsAllCompressed.json";
 
-console.log(jsonData)
+
 
 const jsonDynamic = jsonData[birdId];
-console.log(jsonDynamic)
+
+let audioLink = "";
 let mainURL = "";
 let firstURL = "";
 let secondURL = "";
@@ -150,8 +150,10 @@ let mainURLSmall = "";
 let firstURLSmall = "";
 let secondURLSmall = "";
 let thirdURLSmall = "";
-function handleImageFromChild( childMainURL, childFirstURL, childSecondURL, 
+let received = false;
+function handleImageFromChild(childAudioLink, childMainURL, childFirstURL, childSecondURL, 
         childThirdURL, childMainURLSmall, childFirstURLSmall, childSecondURLSmall, childThirdURLSmall){
+  audioLink += childAudioLink;
   mainURL += childMainURL;
   firstURL += childFirstURL;
   secondURL +=childSecondURL;
@@ -160,7 +162,7 @@ function handleImageFromChild( childMainURL, childFirstURL, childSecondURL,
   firstURLSmall+=childFirstURLSmall;
   secondURLSmall+=childSecondURLSmall;
   thirdURLSmall+=childThirdURLSmall;
-
+  received = true; 
 }
 
 const listItems = ref({});
@@ -200,9 +202,39 @@ getData();
   font-size:20px;
 }
 
-.box {
+.gridLayout{
+  display:grid;
+  grid-template-columns: 250px 35px;
+  grid-template-rows: 50px;
+  justify-content: center;
+  align-items:center;
+  column-gap:0px;
+  row-gap:0px;
+}
+
+.gridLayout .child{
+  align-self:flex-start;
+}
+.container {
   display: flex;
-  justify-content: space-between;
+  justify-content: baseline;
+  align-items: center;
+  gap:10px;
+  flex-direction:column;
+}
+
+.container .child{
+  align-self:flex-end;
+}
+
+ a{
+
+    text-decoration: none; 
+ 
+   
+}
+a:hover{
+    background-color: rgb(159, 153, 153);
 }
 
 </style>

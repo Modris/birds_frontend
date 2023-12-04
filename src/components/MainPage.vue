@@ -19,12 +19,7 @@
 <br>
 
 
-<div class="container">
-    <div class="item box1"><p>One</p></div>
-    <div class="item box2"><p>Two</p></div>
-    <div class="item box3"><p>Three</p></div>
-    <div class="item box4"><p>Four</p></div>
-</div>
+
 
 </template>
 
