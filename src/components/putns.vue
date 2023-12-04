@@ -50,9 +50,17 @@
 </PutnsDynamic>
 
 
-
-
-<picture>
+<picture v-if="birdId == 23 || birdId == 39">
+  <source  media="(max-width: 500px)" width="360" height="450" :srcset="mainURLSmall" decoding="async"/>
+  <source  media="(min-width: 501px)" width="600" height="400" :srcset="mainURL" decoding="async"/>
+  <img />
+</picture>
+<picture v-else-if="birdId == 37">
+  <source  media="(max-width: 500px)" width="450" height="300" :srcset="mainURLSmall" decoding="async"/>
+  <source  media="(min-width: 501px)" width="600" height="400" :srcset="mainURL" decoding="async"/>
+  <img />
+</picture>
+<picture v-else>
   <source  media="(max-width: 500px)" width="450" height="360" :srcset="mainURLSmall" decoding="async"/>
   <source  media="(min-width: 501px)" width="600" height="400" :srcset="mainURL" decoding="async"/>
   <img />
@@ -83,7 +91,17 @@
 
 
 
-  <picture>
+  <picture v-if="birdId == 23">
+  <source  media="(max-width: 500px)" width="360" height="450" :srcset="firstURLSmall" decoding="async" loading="lazy" />
+  <source  media="(min-width: 501px)" width="600" height="400" :srcset="firstURL" decoding="async" loading="lazy"/>
+  <img />
+  </picture>
+  <picture v-else-if="birdId==26" >
+  <source  media="(max-width: 500px)" width="300" height="450" :srcset="firstURLSmall" decoding="async" loading="lazy" />
+  <source  media="(min-width: 501px)" width="400" height="600" :srcset="firstURL" decoding="async" loading="lazy"/>
+  <img />
+  </picture>
+  <picture v-else >
   <source  media="(max-width: 500px)" width="450" height="360" :srcset="firstURLSmall" decoding="async" loading="lazy" />
   <source  media="(min-width: 501px)" width="600" height="400" :srcset="firstURL" decoding="async" loading="lazy"/>
   <img />
@@ -109,7 +127,19 @@
        {{ jsonDynamic[2]['Country'] }}
   </span>
 <br>
-  <picture>
+<picture v-if="birdId == 36">
+  <source  media="(max-width: 500px)" width="300" height="450" :srcset="thirdURLSmall" decoding="async" loading="lazy" />
+  <source  media="(min-width: 501px)" width="400" height="600" :srcset="thirdURL" decoding="async" loading="lazy"/>
+  <img />
+</picture>
+
+<picture v-else-if="birdId == 26">
+  <source  media="(max-width: 500px)" width="338" height="450" :srcset="thirdURLSmall" decoding="async" loading="lazy" />
+  <source  media="(min-width: 501px)" width="600" height="400" :srcset="thirdURL" decoding="async" loading="lazy"/>
+  <img />
+</picture>
+
+  <picture v-else >
   <source  media="(max-width: 500px)" width="450" height="360" :srcset="thirdURLSmall" decoding="async" loading="lazy" />
   <source  media="(min-width: 501px)" width="600" height="400" :srcset="thirdURL" decoding="async" loading="lazy"/>
   <img />
