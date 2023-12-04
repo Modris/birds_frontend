@@ -1,32 +1,30 @@
 main.jpg 
-	https://macaulaylibrary.org/asset/289035631
-	Mathieu Franzkeit 
-	5 Mar 2011 
-	Riga--Bastejkalna Park
-	Riga City, Latvia 
-
-1.jpg 
-	https://macaulaylibrary.org/asset/140348311
-	Iain Robson 
-	14 Jun 2018 
-	Lake Kanieris
-	Engure, Latvia 
+	https://macaulaylibrary.org/asset/611573945
+	Chris Kehoe 
+	10 Nov 2023 
+	Merseyside
+	England, United Kingdom 
+	
+1.jpg.
+	https://macaulaylibrary.org/asset/611574072
+	Chris Kehoe Media 
+	16 Nov 2023 
+	Merseyside,
+	England, United Kingdom 
 	
 2.jpg 
-	https://macaulaylibrary.org/asset/170877641
-	Stephen Gast 
-	13 Jul 2019 
-	Daugava
-	Riga City, Latvia 
-
-3.jpg 
-	https://macaulaylibrary.org/asset/499101401
-	Ruth Kerr Media from this contributor Profile
-	Date
-	2 Sep 2022 eBird checklist S121583556
-	Location
-	Riga Shipping Lane
-	Riga City, Latvia 
+	https://macaulaylibrary.org/asset/610832927
+	Geoff Carpentier 
+	7 May 2023 
+	Wallanlagen, Rostock
+	Rostock, Germany 
+	
+3.jpg
+	https://macaulaylibrary.org/asset/610548451
+	Vilhelm Fagerström 
+	29 Oct 2023 
+	Cascais
+	Lisboa, Portugal 
 
 audio.mp3 
 	https://macaulaylibrary.org/asset/203898201
