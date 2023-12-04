@@ -5,7 +5,7 @@
 <div > 
 
     <div class="searchBar">
-        <span> Meklēšana: </span> <input v-model="searchText" @input="searchTextUpdated" placeholder="pēc vārda">
+        <span> Meklēšana: </span> <input v-model="searchText" @input="searchTextUpdated" placeholder="pēc latviešu vārda">
     </div>
     <br>
 
@@ -13,13 +13,13 @@
     <tr>
         <th>  </th>
         <th> Vārds </th>
-        <!--<th> Angliski </th> -->
+        <th class = "col3"> Angliski </th> 
         <th> Saite </th>
     </tr>
     <tr v-for="item in itemSearched.items" >
         <td> {{ item.id }}</td>
         <td> {{ item.name }}</td>
-       <!-- <td> {{ item.english_name }}</td> --> 
+       <td class = "col3Row"> {{ item.english_name }}</td> 
         <td> <router-link :to="item.link"> Saite </router-link></td>
     </tr>
 </table>
@@ -100,6 +100,17 @@ function searchTextUpdated(){
 
 </script>
 <style scoped>
+
+@media (max-width: 555px){
+    .col3Row
+    {
+        display: none;
+    }
+    .col3{
+        display:none;
+    }
+}
+
 .flexbox{
     display:flex;
     justify-content: center;
