@@ -43,6 +43,7 @@
   
   <span> <a :href="jsonDynamic[4]['Source']"> Audio Avots. </a> 
               {{ jsonDynamic[4]['Author'] }}.
+              {{ jsonDynamic[4]['Date'] }}.
               {{ jsonDynamic[4]['Country'] }}
         </span> 
         <br><br>
@@ -70,6 +71,7 @@
   <span>  
        <a :href="jsonDynamic[0]['Source']"> Avots. </a> 
        {{ jsonDynamic[0]['Author'] }}.
+       {{ jsonDynamic[0]['Date'] }}.
        {{ jsonDynamic[0]['Country'] }}
   </span>
     
@@ -115,6 +117,7 @@
   <span>  
        <a :href="jsonDynamic[1]['Source']"> Avots. </a> 
        {{ jsonDynamic[1]['Author'] }}.
+       {{ jsonDynamic[1]['Date'] }}.
        {{ jsonDynamic[1]['Country'] }}
   </span>
   
@@ -130,6 +133,7 @@
   <span>  
        <a :href="jsonDynamic[2]['Source']"> Avots. </a> 
        {{ jsonDynamic[2]['Author'] }}.
+       {{ jsonDynamic[2]['Date'] }}.
        {{ jsonDynamic[2]['Country'] }}
   </span>
 <br>
@@ -155,6 +159,7 @@
   <span>  
        <a :href="jsonDynamic[3]['Source']"> Avots. </a> 
        {{ jsonDynamic[3]['Author'] }}.
+       {{ jsonDynamic[3]['Date'] }}.
        {{ jsonDynamic[3]['Country'] }}
   </span>
 
