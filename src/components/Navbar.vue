@@ -2,8 +2,10 @@
 
     <nav>
         <div> <router-link to="/">Sākums</router-link> </div>
-        <div><router-link to="/saraksts">Putnu Saraksts</router-link></div>
-
+        <div class = "flexbox"> 
+            <div><router-link to="/saraksts">Putnu Saraksts</router-link></div>
+            <div><router-link to="/spele">Atmiņas Spēle</router-link></div>
+        </div>
     </nav>
 
 
@@ -28,13 +30,25 @@ nav{
     flex-direction:row;
     justify-content: center;
     align-items: center;
+    overflow:wrap;
 }
-
+.flexbox{
+    display:flex;
+    flex-direction:column;
+    justify-content: center;
+    align-items: center;
+    overflow:wrap;
+}
+@media (min-width:400px){
+    .flexbox{
+        flex-direction:row;
+    }
+}
 nav a{
     display: block;
-    padding: 0 10px;
+    padding:10px;
     color: #fff;
-    line-height: 60px;
+    line-height: 30px;
     font-size: 20px;
     text-decoration: none;
 }

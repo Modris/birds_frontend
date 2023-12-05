@@ -172,7 +172,7 @@
 import { ref, onMounted } from 'vue';
 import { useRoute} from 'vue-router';
 import PutnsDynamic from  '../components/PutnsDynamic.vue'
-import Details from  '../components/details.vue'
+import Details from  '../components/Details.vue'
 
 
 const route = useRoute();
