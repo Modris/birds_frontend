@@ -14,10 +14,12 @@
   <div> <input v-model="userGuess" @input="onInput" placeholder="Mini vai Zini?" /></div>
   <div class="victoryFalse" :class="{victoryTrue: victoryOrDefeat}"> Indikators </div>
 </article>
-<div v-if="userGuess.toLowerCase() == birdNames[+balls[0].id].name.toLowerCase()"> 
+<div v-if="userGuess.toLowerCase() == birdNames[+balls[0].id].name.toLowerCase().trim()"> 
 
-    <p class="correctGuess"> Pareizi: {{ birdNames[+balls[0].id].name.toLowerCase()}} </p>
+    <p class="correctGuess"> Pareizi: {{ birdNames[+balls[0].id].name.toLowerCase().trim()}} </p>
   </div>
+
+<div>  <button @click="GiveHint">Hint</button>  <span>  {{ hint }} </span></div>
 <br><br>
 
 
@@ -103,7 +105,7 @@
 
 
 
-<script setup lang="ts">
+<script setup >
 
 import { ref, onMounted, watchEffect } from "vue"
 import { useAutoAnimate } from '@formkit/auto-animate/vue'
@@ -116,6 +118,7 @@ const dropdown = ref() // we need a DOM node
 var show = ref(false)
 
 var victoryOrDefeat = ref(false);
+var hint = ref('');
 
 let birdNames = [
   { id:0, name: 'Filler so id go from 1-40'},
@@ -179,7 +182,7 @@ const balls = ref([
 const userGuess = ref('');
 function onInput (){
     if(balls.value[0] != null && userGuess != null && victoryOrDefeat != null){
-       if(userGuess.value.toLowerCase() == birdNames[+balls.value[0].id].name.toLowerCase()) {
+       if(userGuess.value.toLowerCase().trim() == birdNames[+balls.value[0].id].name.toLowerCase().trim()) {
         balls.value[0].reveal = true;
         balls.value[0].image = balls.value[0].guessImage;
         victoryOrDefeat.value = true;
@@ -193,7 +196,10 @@ const [parent] = useAutoAnimate({ duration: 500 })
 
 
 function pushBall() {
-  balls.value.push(balls.value.shift()!)
+  if (balls.value.length > 0) {
+  balls.value.push(balls.value.shift());
+  hint.value = ''; /* set hint to empty. */
+  }
   show = ref(false);
   userGuess.value = '';
   victoryOrDefeat.value = false;
@@ -230,6 +236,9 @@ function newGame(){
   show = ref(false); /* Hide spoiler answer */
   userGuess.value = ''; /* Set user guess to 0. It's so the indicator isn't greenlit */
   victoryOrDefeat.value = false; /* Sets indicator to red. New game. No guess yet. */
+  hint.value = ''; /* set hint to empty. */
+
+
   count.value = count.value+1;
   if(count.value == 0 ){ /* starting new game. count = -1 + 0 = 0; */
     shuffle(ranNums.value);
@@ -253,7 +262,10 @@ function newGame(){
     } else{
       chosenOne[start] = ''+randImages.value[start];
     } 
-    balls.value[start].image = "../src/assets/putni/mainPage/card"+(start+1)+".webp"; /* reset images to default */
+    
+    balls.value[start].image = "../src/assets/putni/mainPage/card"+(start+1)+"_new.webp"; /* reset images to default */
+    
+    
     balls.value[start].reveal = false; /* Reset reveals to false. */
 
     guessImageCooked = ref("../src/assets/putni/putns"+ranNums.value[i]+"/"+chosenOne[start]+"_resize_large.webp");
@@ -267,12 +279,20 @@ function newGame(){
     } else{
       balls.value[start].source = jsonData[balls.value[start].id][balls.value[start].pic];
     }
+    balls.value[start].answer = birdNames[+balls.value[start].id].name.toLowerCase();
     start++;
 
   }
-
 }
 
+function GiveHint () {
+
+  if(hint != null && balls.value[0] != null && hint.value.length <= balls.value[0].answer.length)
+  var start = hint.value.length;
+  var answer = balls.value[0].answer;
+  console.log(answer)
+  hint.value = hint.value+answer.charAt(start);
+};
 </script>
 
 
