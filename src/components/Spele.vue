@@ -1,6 +1,6 @@
 <template>
 <div></div>
-
+<br>
 <h1> Samaisam atmiņas kartes </h1>
 <Boxes @someEvent="callback" />
 <br> <br> 
@@ -9,7 +9,17 @@
     <img :src="start.image" width="50" height="65"/>
   </li>
 </ul>
-<!-- <p> {{  birdNames[40].name.toLowerCase() }}</p>  -->
+
+<article class = "containerOne" v-if="birdNames[+balls[0].id].name != null  &&  victoryOrDefeat != null"> 
+  <div> <input v-model="userGuess" @input="onInput" placeholder="Mini vai Zini?" /></div>
+  <div class="victoryFalse" :class="{victoryTrue: victoryOrDefeat}"> Indikators </div>
+</article>
+<div v-if="userGuess.toLowerCase() == birdNames[+balls[0].id].name.toLowerCase()"> 
+
+    <p class="correctGuess"> Pareizi: {{ birdNames[+balls[0].id].name.toLowerCase()}} </p>
+  </div>
+<br><br>
+
 
   <button @click="pushBall" > Nākamā</button>
 <br><br>
@@ -95,15 +105,17 @@
 
 <script setup lang="ts">
 
-import { ref, onMounted } from "vue"
+import { ref, onMounted, watchEffect } from "vue"
 import { useAutoAnimate } from '@formkit/auto-animate/vue'
 import Boxes from "../components/Boxes.vue"
 import jsonData from  "../assets/putni/source/source_putnsAllCompressed.json";
 
+
+
 const dropdown = ref() // we need a DOM node
 var show = ref(false)
 
-var jsonDynamic = ref([{}]);
+var victoryOrDefeat = ref(false);
 
 let birdNames = [
   { id:0, name: 'Filler so id go from 1-40'},
@@ -164,6 +176,17 @@ const balls = ref([
 ])
 
 
+const userGuess = ref('');
+function onInput (){
+    if(balls.value[0] != null && userGuess != null && victoryOrDefeat != null){
+       if(userGuess.value.toLowerCase() == birdNames[+balls.value[0].id].name.toLowerCase()) {
+        balls.value[0].reveal = true;
+        victoryOrDefeat.value = true;
+    } else{
+      victoryOrDefeat.value = false;
+    }
+  }
+}
 
 const [parent] = useAutoAnimate({ duration: 500 })
 
@@ -238,9 +261,8 @@ function newGame(){
     start++;
 
   }
-  
-}
 
+}
 
 </script>
 
@@ -328,5 +350,24 @@ section > ul.balls > li {
 .dropdown-content{
   font-weight:bold;
   background-color:red;
+}
+
+
+.containerOne{
+  display:grid;
+  grid-template-columns: 14% 10%;
+  justify-content: center;
+  align-items: center;
+}
+
+.victoryFalse{
+  background-color:red;
+  font-size:20px;
+  border-radius:10px;
+}
+.victoryTrue{
+  background-color:green;
+  font-size:20px;
+  border-radius:10px;
 }
 </style>
