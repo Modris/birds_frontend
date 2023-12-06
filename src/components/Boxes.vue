@@ -11,15 +11,17 @@
       />
     </div>
   </div>
-  <!-- 
-     <button class="button button--alt" @click="randomize">Sākt Jaunu Spēli</button>
-  -->
+    <p> 40 sugas. 4 iespējamās bildes katrai sugai. Kopā 240 bildes. </p>
     <button @click="$emit('someEvent'); randomize();">Sākt Jaunu Spēli</button>
 </template>
 
 <script setup lang="ts">
 import { vAutoAnimate } from '@formkit/auto-animate/vue'
-import { ref } from "vue"
+import { ref, defineEmits} from "vue"
+
+const emits = defineEmits(["someEvent"])
+
+emits("someEvent");
 
 const numbers = ref<number[]>(new Array(40).fill("").map((_, i) => i))
 const randomize = () => {
@@ -33,6 +35,11 @@ const randomize = () => {
   grid-template-columns: 70%;
   align-items: center;
   justify-content: center;
+}
+@media (min-width:650px){
+  .grid{
+    grid-template-columns:40%;
+  }
 }
 .boxes {
   display: flex;
