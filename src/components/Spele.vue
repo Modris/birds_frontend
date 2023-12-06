@@ -6,7 +6,7 @@
 <br> <br> 
 <ul class="balls" ref="parent">
   <li v-for="start in balls" :key="start.text">
-    <img :src="start.image" width="50" height="65"/>
+    <img :src="start.image" width="65" height="80"/>
   </li>
 </ul>
 
@@ -181,6 +181,7 @@ function onInput (){
     if(balls.value[0] != null && userGuess != null && victoryOrDefeat != null){
        if(userGuess.value.toLowerCase() == birdNames[+balls.value[0].id].name.toLowerCase()) {
         balls.value[0].reveal = true;
+        balls.value[0].image = balls.value[0].guessImage;
         victoryOrDefeat.value = true;
     } else{
       victoryOrDefeat.value = false;
@@ -194,7 +195,8 @@ const [parent] = useAutoAnimate({ duration: 500 })
 function pushBall() {
   balls.value.push(balls.value.shift()!)
   show = ref(false);
-
+  userGuess.value = '';
+  victoryOrDefeat.value = false;
 }
 function sortBalls() {
   balls.value.sort((a, b) => a.order - b.order);
@@ -225,7 +227,9 @@ function shuffle(array) {
 }
 
 function newGame(){
-  show = ref(false);
+  show = ref(false); /* Hide spoiler answer */
+  userGuess.value = ''; /* Set user guess to 0. It's so the indicator isn't greenlit */
+  victoryOrDefeat.value = false; /* Sets indicator to red. New game. No guess yet. */
   count.value = count.value+1;
   if(count.value == 0 ){ /* starting new game. count = -1 + 0 = 0; */
     shuffle(ranNums.value);
@@ -240,6 +244,8 @@ function newGame(){
 
   var chosenOne = ['','','','',''];
   var start = 0;
+  /* For loop with count.value*5 is because i have 40 cards. Every 7 rounds i shuffle.
+  Instead of shuffling every time. It also means it's more randomized without repeats as often.*/
   for(let i =0+(count.value*5); i<5+(count.value*5); i++){
       if(randImages.value[start] == 0){
       chosenOne[start] = 'main';
@@ -247,6 +253,9 @@ function newGame(){
     } else{
       chosenOne[start] = ''+randImages.value[start];
     } 
+    balls.value[start].image = "../src/assets/putni/mainPage/card"+(start+1)+".webp"; /* reset images to default */
+    balls.value[start].reveal = false; /* Reset reveals to false. */
+
     guessImageCooked = ref("../src/assets/putni/putns"+ranNums.value[i]+"/"+chosenOne[start]+"_resize_large.webp");
     balls.value[start].guessImage = guessImageCooked.value;
     balls.value[start].id = ''+ranNums.value[i];
@@ -272,7 +281,7 @@ function newGame(){
   aspect-ratio: 1;
   margin: 2em auto;
   width: 100%;
-  max-width: 15em;
+  max-width: 20em;
   position: relative;
   padding: 0;
   background-size: contain;
@@ -280,8 +289,8 @@ function newGame(){
 }
 
 section > ul.balls > li {
-  width: 4em;
-  height: 4em;
+  width: 7em;
+  height: 7em;
   border-radius: 4em;
   display: flex;
   align-items: center;
