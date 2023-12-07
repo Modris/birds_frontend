@@ -3,7 +3,6 @@ import MainPage from '../components/MainPage.vue'
 import Putns from '../components/putns.vue'
 import Saraksts from  '../components/Saraksts.vue'
 import Spele from  '../components/Spele.vue'
-import Test from  '../components/Test.vue'
 import PutnsDynamic from '../components/putnsDynamic.vue'
 
 const routes = [
