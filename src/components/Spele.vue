@@ -1,54 +1,48 @@
 <template>
-<br><br><br>
-<article class="angry-grid">
-  <div class="spanAll">testaaaaa;</div>
-  <div class="bottomLeft">testaaaaa;</div>
-  <div class="bottomRight">testaaaaa;</div>
-</article>
 
-<br><br><br><br>
+<br>
 <h1> Samaisam atmiņas kartes </h1>
 <span> 40 sugas. 4 iespējamās bildes katrai sugai. Kopā 240 bildes. </span>
 <Boxes @someEvent="callback" />
 <br> <br> 
-<article class="centerGrid"> 
-<ul class="balls" ref="parent">
-  <li v-for="start in balls" :key="start.text">
-    <img :src="start.image" width="65" height="80"/>
-  </li>
-</ul>
+
+<article class="angry-grid"  >
+  <div class = "spanAll"> 
+    <ul class="balls" ref="parent" >
+      <li v-for="start in balls" :key="start.text">
+        <img :src="start.image" width="65" height="80"/>
+      </li>
+    </ul>
+  </div>
+  <div class="bottomLeft"><button class="bn39" @click="GiveHint">Mājiens 🤫</button> </div>
+  <div class="bottomRight"> <button class="bn40" @click="pushBall" > ▶ </button> </div>
 </article>
+
 <article class = "containerOne" v-if="birdNames[+balls[0].id].name != null"> 
-   <div>  <button class="bn39" @click="GiveHint">Mājiens 🤫</button> </div>
-
-    <div> <span class="fontSize">  {{ hint }} </span></div>
-
-    <div>   <button class="bn40" @click="pushBall" > ▶ </button> </div>
-    <!-- New row.-->
+   <div> <span class="fontSize">  {{ hint }} </span> </div>
+   <div v-if="balls[0].reveal == true"> 
+    <p  class="correctGuess"> {{ birdNames[+balls[0].id].name.toLowerCase().trim()}} </p>
+  </div>
+</article>
+   
+<article class="centerGrid"> 
     <div> <input class="userGuessBox" v-model="userGuess" @input="onInput" placeholder="Mini vai Zini?" /></div>
-    <div> </div> <!-- empty grid for victoryFalse div positioning-->
+
     <div class="victoryFalse" :class="{victoryTrue: balls[0].reveal}"> <span v-if="balls[0].reveal == false"> ❌</span> 
       <span v-if="balls[0].reveal == true"> ✔️</span> </div>
- </article>
+  </article>
 
-
-<div v-if="balls[0].reveal == true"> 
-    <p  class="correctGuess"> Pareizi: {{ birdNames[+balls[0].id].name.toLowerCase().trim()}} </p>
-  </div>
-
-<br>
-
-<div v-if="birdNames[+balls[0].id].name != null"> 
-  <div class = "containerTwo"> 
-  <div ref="dropdown" class="dropdown">
+<div class="containerTwo">
+  <div v-if="birdNames[+balls[0].id].name != null" class = "dropdown" ref="dropdown">
     <strong class="dropdown-label" @click="toggleShow">
     Atbilde 🚫
     </strong>
     <p class="dropdown-content" v-if="show"> {{ birdNames[+balls[0].id].name }} </p>
   </div>
+
 </div>
-<br>
-</div>
+
+
 
 
 <div v-if="ranNums !=null && randImages != null && guessImageCooked != null"> 
@@ -122,9 +116,11 @@ import jsonData from  "../assets/putni/source/source_putnsAllCompressed.json";
 
 
 
-const dropdown = ref() // we need a DOM node
 var show = ref(false)
 
+onMounted(() => {
+  useAutoAnimate(dropdown.value) // thats it!
+})
 var hint = ref('');
 
 let birdNames = [
@@ -197,6 +193,7 @@ function onInput (){
 }
 
 const [parent] = useAutoAnimate({ duration: 500 })
+const [dropdown] = useAutoAnimate({ duration: 200 })
 
 
 function pushBall() {
@@ -294,6 +291,7 @@ function GiveHint () {
   var answer = balls.value[0].answer;
   console.log(answer)
   hint.value = hint.value+answer.charAt(start);
+ /* userGuess.value = hint.value; I didn't like the functionality of this.*/
 };
 
 function toggleShow(){
@@ -311,31 +309,7 @@ function toggleShow(){
 
 
 <style scoped>
-.angry-grid {
-   display: grid; 
-   grid-template-columns: 29% 29% 29%;
-   grid-template-rows: 20% 20% 20%;
-   row-gap:150px;
-   justify-content: center;
-}
-.spanAll {
 
-   background-color: #E9B55B; 
-   grid-row-start: 1;
-   grid-column-start: 1;
-
-   grid-row-end: 4;
-   grid-column-end: 4;
-}
-
-.bottomLeft{
- grid-area:3/1 /3/1;
- background-color:Green;
-}
-.bottomRight{
-  grid-area:3/3 /3/3;
- background-color:Green;
-}
 
 
 .containerTwo{
@@ -343,6 +317,7 @@ function toggleShow(){
   grid-template-columns: 42%;
   justify-content: center;
   align-items: center;
+  padding:20px;
 }
 @media (min-width:600px){
   .containerTwo{
@@ -351,7 +326,7 @@ function toggleShow(){
 }
 @media (min-width:1000px){
   .containerTwo{
-    grid-template-columns: 13%;
+    grid-template-columns: 20%;
   }
 }
 .dropdown {
@@ -361,7 +336,6 @@ function toggleShow(){
 
   /*background-image: url("../assets/putni/mainPage/mainPage.webp"); */
   background: linear-gradient(to right, #ff8177 0%, #ff867a 0%, #ff8c7f 21%, #f99185 52%, #cf556c 78%, #b12a5b 100%);
-  width:100%;
 }
 
 .dropdown strong {
@@ -377,14 +351,19 @@ function toggleShow(){
 
 .containerOne{
   display:grid;
-  grid-template-columns: 34% 38% 15%;
-  grid-template-rows:60px;
+  grid-template-columns: 40% 40%;
+  grid-template-rows:80px;
   justify-content: center;
   align-items: center;
+  margin:-10px;
+
 }
-.containerOne :nth-child(5){
-  
+.spanThree{
+  grid-column-start:1;
+  grid-column-end:4;
+  align-self:end;
 }
+
 .userGuessBox{
   font-size:20px;
 }
@@ -420,15 +399,12 @@ function toggleShow(){
 .bn40 {
 
   background: radial-gradient(128px at 2.9% 15%, rgb(191, 224, 251) 0%, rgb(232, 233, 251) 25.8%, rgb(252, 239, 250) 50.8%, rgb(234, 251, 251) 77.6%, rgb(240, 251, 244) 100.7%);
-
   border-radius: 100%;
   color: #004953;
   display: block;
   width: 50px;
   height: 50px;
   font-size: 32px;
-  text-align: center;
-  justify-content: center;
   text-decoration: none;
 }
 
@@ -452,6 +428,7 @@ function toggleShow(){
 }
 
 .balls {
+  background-color: lightgray;
   aspect-ratio: 1;
   width: 100%;
   max-width: 25em;
@@ -499,9 +476,45 @@ section > ul.balls > li {
 }
 
 .centerGrid{
-  display:grid;
- grid-template-columns: 80%;
+ display:grid;
+ grid-template-columns: 60% 10%;
  justify-items: center;
  justify-content: center;
+ row-gap:25px;
+}
+
+.childItem5{
+  align-self:start;
+  width:150px;
+}
+.angry-grid {
+  background-color: white;
+   display: grid; 
+   grid-template-columns: 29% 29% 29%;
+   grid-template-rows: 20% 20% 20%;
+  row-gap:150px;
+
+}
+.spanAll {
+  background-color: lightgray;
+   grid-row-start: 1;
+   grid-column-start: 1;
+   grid-row-end: 4;
+   grid-column-end: 4;
+  z-index:5;
+}
+
+.bottomLeft{
+ grid-area:3/1 /3/1;
+ background-color: transparent;
+ z-index:6;
+ align-self:end;
+
+}
+.bottomRight{
+  grid-area:3/3 /3/3;
+  background-color: transparent;
+  z-index:6;
+  align-self: end;
 }
 </style>

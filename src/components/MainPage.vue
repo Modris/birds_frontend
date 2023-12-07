@@ -101,6 +101,7 @@ import { ref, onMounted } from "vue"
 
 import autoAnimate from "@formkit/auto-animate"
 const dropdown = ref() // we need a DOM node
+
 const show = ref(false)
 
 onMounted(() => {
@@ -196,7 +197,7 @@ p, span, a{
   font-size:20px;
   border: 2px solid var(--gray-l);
   border-radius: 0.5em;
-
+  background-color:transparent;
   background-image: url("../assets/putni/mainPage/mainPage.webp");
   width:100%;
 }
@@ -205,6 +206,9 @@ p, span, a{
   display: block;
   cursor: pointer;
 }
-
+.dropdown-content{
+  font-weight:bold;
+  background-color:transparent;
+}
 
 </style>
