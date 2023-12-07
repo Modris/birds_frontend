@@ -1,47 +1,55 @@
 <template>
-<div></div>
-<br>
+<br><br><br>
+<article class="angry-grid">
+  <div class="spanAll">testaaaaa;</div>
+  <div class="bottomLeft">testaaaaa;</div>
+  <div class="bottomRight">testaaaaa;</div>
+</article>
+
+<br><br><br><br>
 <h1> Samaisam atmiņas kartes </h1>
+<span> 40 sugas. 4 iespējamās bildes katrai sugai. Kopā 240 bildes. </span>
 <Boxes @someEvent="callback" />
 <br> <br> 
+<article class="centerGrid"> 
 <ul class="balls" ref="parent">
   <li v-for="start in balls" :key="start.text">
     <img :src="start.image" width="65" height="80"/>
   </li>
 </ul>
-
-<article class = "containerOne" v-if="birdNames[+balls[0].id].name != null  &&  victoryOrDefeat != null"> 
-  <div> <input v-model="userGuess" @input="onInput" placeholder="Mini vai Zini?" /></div>
-  <div class="victoryFalse" :class="{victoryTrue: victoryOrDefeat}"> Indikators </div>
 </article>
-<div v-if="userGuess.toLowerCase() == birdNames[+balls[0].id].name.toLowerCase().trim()"> 
+<article class = "containerOne" v-if="birdNames[+balls[0].id].name != null"> 
+   <div>  <button class="bn39" @click="GiveHint">Mājiens 🤫</button> </div>
 
-    <p class="correctGuess"> Pareizi: {{ birdNames[+balls[0].id].name.toLowerCase().trim()}} </p>
+    <div> <span class="fontSize">  {{ hint }} </span></div>
+
+    <div>   <button class="bn40" @click="pushBall" > ▶ </button> </div>
+    <!-- New row.-->
+    <div> <input class="userGuessBox" v-model="userGuess" @input="onInput" placeholder="Mini vai Zini?" /></div>
+    <div> </div> <!-- empty grid for victoryFalse div positioning-->
+    <div class="victoryFalse" :class="{victoryTrue: balls[0].reveal}"> <span v-if="balls[0].reveal == false"> ❌</span> 
+      <span v-if="balls[0].reveal == true"> ✔️</span> </div>
+ </article>
+
+
+<div v-if="balls[0].reveal == true"> 
+    <p  class="correctGuess"> Pareizi: {{ birdNames[+balls[0].id].name.toLowerCase().trim()}} </p>
   </div>
 
-<div>  <button @click="GiveHint">Hint</button>  <span>  {{ hint }} </span></div>
-<br><br>
+<br>
 
-
-  <button @click="pushBall" > Nākamā</button>
-<br><br>
 <div v-if="birdNames[+balls[0].id].name != null"> 
   <div class = "containerTwo"> 
   <div ref="dropdown" class="dropdown">
-    <strong class="dropdown-label" @click="show = !show">
-    Parādīt atbildi.
+    <strong class="dropdown-label" @click="toggleShow">
+    Atbilde 🚫
     </strong>
     <p class="dropdown-content" v-if="show"> {{ birdNames[+balls[0].id].name }} </p>
   </div>
 </div>
 <br>
 </div>
-  <!--  card1 = balls[0] 
-        card2 = balls[1]
-        card3 = balls[2]
-        card4 = balls[3]
-        card5 = balls[4]. Careful when setting reveal:true. 
-    -->
+
 
 <div v-if="ranNums !=null && randImages != null && guessImageCooked != null"> 
 
@@ -117,7 +125,6 @@ import jsonData from  "../assets/putni/source/source_putnsAllCompressed.json";
 const dropdown = ref() // we need a DOM node
 var show = ref(false)
 
-var victoryOrDefeat = ref(false);
 var hint = ref('');
 
 let birdNames = [
@@ -181,14 +188,11 @@ const balls = ref([
 
 const userGuess = ref('');
 function onInput (){
-    if(balls.value[0] != null && userGuess != null && victoryOrDefeat != null){
+    if(balls.value[0] != null && userGuess != null){
        if(userGuess.value.toLowerCase().trim() == birdNames[+balls.value[0].id].name.toLowerCase().trim()) {
         balls.value[0].reveal = true;
         balls.value[0].image = balls.value[0].guessImage;
-        victoryOrDefeat.value = true;
-    } else{
-      victoryOrDefeat.value = false;
-    }
+    } 
   }
 }
 
@@ -202,7 +206,6 @@ function pushBall() {
   }
   show = ref(false);
   userGuess.value = '';
-  victoryOrDefeat.value = false;
 }
 function sortBalls() {
   balls.value.sort((a, b) => a.order - b.order);
@@ -235,7 +238,6 @@ function shuffle(array) {
 function newGame(){
   show = ref(false); /* Hide spoiler answer */
   userGuess.value = ''; /* Set user guess to 0. It's so the indicator isn't greenlit */
-  victoryOrDefeat.value = false; /* Sets indicator to red. New game. No guess yet. */
   hint.value = ''; /* set hint to empty. */
 
 
@@ -293,15 +295,166 @@ function GiveHint () {
   console.log(answer)
   hint.value = hint.value+answer.charAt(start);
 };
+
+function toggleShow(){
+  show.value = !show.value;
+  if(show.value == true){
+    balls.value[0].reveal = true;
+    balls.value[0].image = balls.value[0].guessImage;
+    victoryOrDefeat.value = true;
+  }
+ 
+}
+
+
 </script>
 
 
 <style scoped>
+.angry-grid {
+   display: grid; 
+   grid-template-columns: 29% 29% 29%;
+   grid-template-rows: 20% 20% 20%;
+   row-gap:150px;
+   justify-content: center;
+}
+.spanAll {
+
+   background-color: #E9B55B; 
+   grid-row-start: 1;
+   grid-column-start: 1;
+
+   grid-row-end: 4;
+   grid-column-end: 4;
+}
+
+.bottomLeft{
+ grid-area:3/1 /3/1;
+ background-color:Green;
+}
+.bottomRight{
+  grid-area:3/3 /3/3;
+ background-color:Green;
+}
+
+
+.containerTwo{
+  display:grid;
+  grid-template-columns: 42%;
+  justify-content: center;
+  align-items: center;
+}
+@media (min-width:600px){
+  .containerTwo{
+    grid-template-columns: 30%;
+  }
+}
+@media (min-width:1000px){
+  .containerTwo{
+    grid-template-columns: 13%;
+  }
+}
+.dropdown {
+  font-size:20px;
+  border: 2px solid var(--gray-l);
+  border-radius: 0.5em;
+
+  /*background-image: url("../assets/putni/mainPage/mainPage.webp"); */
+  background: linear-gradient(to right, #ff8177 0%, #ff867a 0%, #ff8c7f 21%, #f99185 52%, #cf556c 78%, #b12a5b 100%);
+  width:100%;
+}
+
+.dropdown strong {
+  display: block;
+  cursor: pointer;
+}
+
+.dropdown-content{
+  font-weight:bold;
+  background-color:red;
+}
+
+
+.containerOne{
+  display:grid;
+  grid-template-columns: 34% 38% 15%;
+  grid-template-rows:60px;
+  justify-content: center;
+  align-items: center;
+}
+.containerOne :nth-child(5){
+  
+}
+.userGuessBox{
+  font-size:20px;
+}
+.fontSize{
+  font-size:20px;
+}
+
+
+
+
+
+
+
+
+
+
+
+/* CSS */
+.bn39 {
+  background-image: linear-gradient(220deg, #008aff, #86d472);
+  border-radius: 6px;
+  box-sizing: border-box;
+  color: #ffffff;
+  display: block;
+  height: 40px;
+  font-size: 20px;
+  font-weight: 600;
+  padding: 4px;
+  text-decoration: none;
+  width: 125px;
+}
+
+.bn40 {
+
+  background: radial-gradient(128px at 2.9% 15%, rgb(191, 224, 251) 0%, rgb(232, 233, 251) 25.8%, rgb(252, 239, 250) 50.8%, rgb(234, 251, 251) 77.6%, rgb(240, 251, 244) 100.7%);
+
+  border-radius: 100%;
+  color: #004953;
+  display: block;
+  width: 50px;
+  height: 50px;
+  font-size: 32px;
+  text-align: center;
+  justify-content: center;
+  text-decoration: none;
+}
+
+
+.victoryFalse{
+  background: linear-gradient(to right, #ff8177 0%, #ff867a 0%, #ff8c7f 21%, #f99185 52%, #cf556c 78%, #b12a5b 100%);
+  font-size:20px;
+  border-radius:10px;
+}
+.victoryTrue{
+  background:green;
+  font-size:20px;
+  border-radius:10px;
+}
+
+.correctGuess{
+  font-size:20px;
+  color:green;
+  font-weight:bold;
+
+}
+
 .balls {
   aspect-ratio: 1;
-  margin: 2em auto;
   width: 100%;
-  max-width: 20em;
+  max-width: 25em;
   position: relative;
   padding: 0;
   background-size: contain;
@@ -319,6 +472,7 @@ section > ul.balls > li {
   font-weight: 500;
   color: white;
   margin-bottom: 0;
+  
 }
 
 .balls li::before {
@@ -344,59 +498,10 @@ section > ul.balls > li {
   left: 0;
 }
 
-
-
-.containerTwo{
+.centerGrid{
   display:grid;
-  grid-template-columns: 42%;
-  justify-content: center;
-  align-items: center;
-}
-@media (min-width:600px){
-  .containerTwo{
-    grid-template-columns: 30%;
-  }
-}
-@media (min-width:1000px){
-  .containerTwo{
-    grid-template-columns: 13%;
-  }
-}
-.dropdown {
-  font-size:20px;
-  border: 2px solid var(--gray-l);
-  border-radius: 0.5em;
-
-  background-image: url("../assets/putni/mainPage/mainPage.webp");
-  width:100%;
-}
-
-.dropdown strong {
-  display: block;
-  cursor: pointer;
-}
-
-.dropdown-content{
-  font-weight:bold;
-  background-color:red;
-}
-
-
-.containerOne{
-  display:grid;
-  grid-template-columns: 14% 10%;
-  justify-content: center;
-  align-items: center;
-}
-
-.victoryFalse{
-  background-color:red;
-  font-size:20px;
-  border-radius:10px;
-}
-.victoryTrue{
-  background-color:green;
-  font-size:20px;
-  border-radius:10px;
+ grid-template-columns: 80%;
+ justify-items: center;
+ justify-content: center;
 }
 </style>
