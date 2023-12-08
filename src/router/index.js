@@ -12,7 +12,8 @@ const routes = [
     },
     {
         path: "/putns/:id",
-        component:  Putns 
+        component:  Putns,
+        meta: { transition: 'fade' }
       },
 
       {

@@ -1,36 +1,34 @@
 <template>
-<br> 
+<div :key="$route.params.id"> 
+    <br> 
 
 
-<div > 
+    <div > 
 
-    <div class="searchBar">
-        <span> Meklēšana: </span> <input v-model="searchText" @input="searchTextUpdated" placeholder="pēc latviešu vārda">
-    </div>
+        <div class="searchBar">
+            <span> Meklēšana: </span> <input v-model="searchText" @input="searchTextUpdated" placeholder="pēc latviešu vārda">
+        </div>
+        <br>
+
+    <table >
+        <tr>
+            <th>  </th>
+            <th> Vārds </th>
+            <th class = "col3"> Angliski </th> 
+            <th> Saite </th>
+        </tr>
+        <tr v-for="item in itemSearched.items" >
+            <td> {{ item.id }}</td>
+            <td> {{ item.name }}</td>
+        <td class = "col3Row"> {{ item.english_name }}</td> 
+            <td> <router-link :to="item.link"> Saite </router-link></td>
+        </tr>
+    </table>
+
     <br>
 
-<table >
-    <tr>
-        <th>  </th>
-        <th> Vārds </th>
-        <th class = "col3"> Angliski </th> 
-        <th> Saite </th>
-    </tr>
-    <tr v-for="item in itemSearched.items" >
-        <td> {{ item.id }}</td>
-        <td> {{ item.name }}</td>
-       <td class = "col3Row"> {{ item.english_name }}</td> 
-        <td> <router-link :to="item.link"> Saite </router-link></td>
-    </tr>
-</table>
-
-<br>
-
-</div>
-
-
-
-
+    </div>
+</div> <!-- end of  <div :key="$route.params.id"> -->
 
 </template>
 <script setup>

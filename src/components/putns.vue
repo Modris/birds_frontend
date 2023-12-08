@@ -1,4 +1,5 @@
 <template>
+  <div :key="$route.params.id"> 
 <br> 
 
   <br> 
@@ -47,6 +48,7 @@
               {{ jsonDynamic[4]['Country'] }}
         </span> 
         <br><br>
+        
 <PutnsDynamic @image-to-parent="handleImageFromChild">
 </PutnsDynamic>
 
@@ -163,8 +165,8 @@
        {{ jsonDynamic[3]['Country'] }}
   </span>
 
-<br> 
-
+  <br> 
+</div><!-- end of  <div :key="$route.params.id"> -->
 </template>
 
 <script setup>
