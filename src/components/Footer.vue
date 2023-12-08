@@ -20,7 +20,7 @@ footer{
     width:100%;
     font-family: Arial;
     background-color: #000000;
-background-image: linear-gradient(247deg, #000000 0%, #2c3e50 74%);
+    background-image: linear-gradient(247deg, #000000 0%, #2c3e50 74%);
     display:flex;
     flex-direction:row;
     justify-content: center;

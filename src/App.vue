@@ -1,13 +1,18 @@
 <template>
 
+  <div class="main-container">
+    <div> <Navbar /> </div>
+    
+    <div class="content"> 
+      <transition name="fade">
+        <router-view :key="$route.params.id"/>
+      </transition>
+    </div>
 
-  <div> 
-    <Navbar />
-    <transition name="fade">
-    <router-view  :key="$route.params.id"/>
-    </transition>
-    <br> <br>
-    <Footer />
+    <div> 
+       <Footer class="footer" />
+    </div>
+    
   </div>
 
 </template>
@@ -19,8 +24,17 @@ import Footer from './components/Footer.vue'
 </script>
 
 <style>
-
-
+.main-container {
+   display:flex;
+   flex-direction: column;
+   min-height: 100vh;
+}
+.footer{
+  margin-top: auto;
+}
+.content{
+  flex-grow: 1;
+}
 .fade-enter-active, .fade-leave-active {
   transition-property: opacity;
   transition-duration: .05s;
