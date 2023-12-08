@@ -19,26 +19,16 @@
 footer{
     width:100%;
     font-family: Arial;
-    background-color: #4d4855;
-    background-image: linear-gradient(147deg, #4d4855 0%, #000000 74%);
+    background-color: #000000;
+background-image: linear-gradient(247deg, #000000 0%, #2c3e50 74%);
     display:flex;
     flex-direction:row;
     justify-content: center;
     align-items: center;
     flex-wrap:wrap;
-}
-.flexbox{
-    display:flex;
-    flex-direction:column;
-    justify-content: center;
-    align-items: center;
     overflow:wrap;
 }
-@media (min-width:300px){
-    footer{
-        
-    }
-}
+
 footer a{
     display: block;
     padding:10px;

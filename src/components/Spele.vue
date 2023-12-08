@@ -18,14 +18,13 @@
     <div class="bottomLeft"><button class="bn39" @click="GiveHint">Mājiens 🤫</button> </div>
     <div class="bottomRight"> <button class="bn40" @click="pushBall" > ▶ </button>  </div>
   </article>
-  
+
   <article class = "containerOne" v-if="birdNames[+balls[0].id].name != null"> 
-     <div> <span class="fontSize">  {{ hint }} </span> </div>
+     <div> <span v-if="hint.length != 0" class="fontSize">  {{ hint }} </span> <span class="fontSize" v-else> &nbsp;</span> </div>
      <div v-if="balls[0].reveal == true"> 
-      <p  class="correctGuess"> {{ birdNames[+balls[0].id].name.toLowerCase().trim()}} </p>
+      <span  class="correctGuess"> {{ birdNames[+balls[0].id].name.toLowerCase().trim()}} </span>
     </div>
-  </article>
-     
+  </article> 
   <article class="centerGrid"> 
     <div class="flexbox">
   
@@ -364,17 +363,11 @@
   
   .containerOne{
     display:grid;
-    grid-template-columns: 40% 40%;
-    grid-template-rows:80px;
+    grid-template-columns: 50% 50%;
     justify-content: center;
     align-items: center;
-    margin:-10px;
-  
-  }
-  .spanThree{
-    grid-column-start:1;
-    grid-column-end:4;
-    align-self:end;
+    margin:10px;
+    box-sizing: border-box;
   }
   
   .userGuessBox{
@@ -527,7 +520,7 @@
     }
     }
     .containerOne{
-      grid-template-columns: 35% 25% ;
+      grid-template-columns: 35% 35% ;
     }
   }
   @media (min-width:860px){
@@ -547,7 +540,8 @@
       grid-template-columns: 29% 13%;
     }
     .containerOne{
-      grid-template-columns: 25% 25% ;
+      grid-template-columns: 25% 25%; /* 25% 25% */
+      overflow:hidden;
     }
   }
   .spanAll {

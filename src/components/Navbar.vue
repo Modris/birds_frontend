@@ -23,7 +23,9 @@
 nav{
     width:100%;
     font-family: Arial;
-    background-color:  #333;
+    background-color: #6daddb;
+    background-image: linear-gradient(315deg, #6daddb 0%, #313131 74%);
+
     display:flex;
     flex-direction:row;
     justify-content: center;
