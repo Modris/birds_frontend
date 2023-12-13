@@ -2,7 +2,7 @@
 
   <br>
   <h1> Samaisam atmiņas kartes </h1>
-  <span class="fontSize"> 40 sugas. 240 bildes. </span>
+  <span class="fontSize"> 40 sugas. 160 bildes. </span>
   
   <Boxes @someEvent="callback" />
   <br> <br> 
@@ -122,7 +122,7 @@
   import { ref, onMounted, watchEffect } from "vue"
   import { useAutoAnimate } from '@formkit/auto-animate/vue'
   import Boxes from "../components/Boxes.vue"
-  import jsonData from  "../assets/putni/source/source_putnsAllCompressed.json";
+  import jsonData from  "../assets/source/source_putnsAllCompressed.json";
   
   
   
@@ -184,11 +184,11 @@
   var guessImageCooked = ref('');
   var id = ref(0);
   const balls = ref([
-    {order:1, image: '../src/assets/putni/mainPage/card1.webp', text: '0', guessImage: '',pic:'', id: '', source:{},answer: '', reveal:false},
-    { order:2,image: '../src/assets/putni/mainPage/card2.webp', text: '1', guessImage: '',pic:'', id: '', source:{}, answer: '', reveal:false },
-    { order:3,image: '../src/assets/putni/mainPage/card3.webp', text: '2', guessImage: '',pic:'', id: '', source:{}, answer: '', reveal:false },
-    {order:4, image: '../src/assets/putni/mainPage/card4.webp', text: '3', guessImage: '',pic:'', id: '', source:{}, answer: '', reveal:false },
-   {order:5, image: '../src/assets/putni/mainPage/card5.webp', text: '4',  guessImage: '',pic:'', id: '', source:{}, answer: '', reveal:false},
+    {order:1, image: '/putni/mainPage/card1.webp', text: '0', guessImage: '',pic:'', id: '', source:{},answer: '', reveal:false},
+    { order:2,image: '/putni/mainPage/card2.webp', text: '1', guessImage: '',pic:'', id: '', source:{}, answer: '', reveal:false },
+    { order:3,image: '/putni/mainPage/card3.webp', text: '2', guessImage: '',pic:'', id: '', source:{}, answer: '', reveal:false },
+    {order:4, image: '/putni/mainPage/card4.webp', text: '3', guessImage: '',pic:'', id: '', source:{}, answer: '', reveal:false },
+   {order:5, image: '/putni/mainPage/card5.webp', text: '4',  guessImage: '',pic:'', id: '', source:{}, answer: '', reveal:false},
   ])
   
   
@@ -272,12 +272,12 @@
         chosenOne[start] = ''+randImages.value[start];
       } 
       
-      balls.value[start].image = "../src/assets/putni/mainPage/card"+(start+1)+"_new.webp"; /* reset images to default */
+      balls.value[start].image = "/putni/mainPage/card"+(start+1)+"_new.webp"; /* reset images to default */
       
       
       balls.value[start].reveal = false; /* Reset reveals to false. */
   
-      guessImageCooked = ref("../src/assets/putni/putns"+ranNums.value[i]+"/"+chosenOne[start]+"_resize_large.webp");
+      guessImageCooked = ref("/putni/putns"+ranNums.value[i]+"/"+chosenOne[start]+"_resize_large.webp");
       balls.value[start].guessImage = guessImageCooked.value;
       balls.value[start].id = ''+ranNums.value[i];
       balls.value[start].pic = chosenOne[start];

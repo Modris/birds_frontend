@@ -23,11 +23,11 @@ emits: ['image-to-parent']
 
 const route = useRoute();
 const birdId = route.params.id;
-const audioLink = "../src/assets/putni/putns"+birdId+"/audio.mp3";
-const mainURL = "../src/assets/putni/putns"+birdId+"/main_resize_large.webp"
-const firstURL = "../src/assets/putni/putns"+birdId+"/1_resize_large.webp"
-const secondURL = "../src/assets/putni/putns"+birdId+"/2_resize_large.webp"
-const thirdURL = "../src/assets/putni/putns"+birdId+"/3_resize_large.webp"
+const audioLink = "/putni/putns"+birdId+"/audio.mp3";
+const mainURL = "/putni/putns"+birdId+"/main_resize_large.webp"
+const firstURL = "/putni/putns"+birdId+"/1_resize_large.webp"
+const secondURL = "/putni/putns"+birdId+"/2_resize_large.webp"
+const thirdURL = "/putni/putns"+birdId+"/3_resize_large.webp"
 
 
 

@@ -97,7 +97,7 @@
 </template>
 
 <script setup>
-import jsonData from  "../assets/putni/source/source_putnsAllCompressed.json";
+import jsonData from  "../assets/source/source_putnsAllCompressed.json";
 import { ref, onMounted } from "vue"
 
 import autoAnimate from "@formkit/auto-animate"
@@ -110,10 +110,8 @@ onMounted(() => {
 })
 
 const jsonDynamic = jsonData[1];
-const mainURL = "../src/assets/putni/putns1/main_resize_large.webp";
-const mainURL1 = "../src/assets/putni/mainPage/wagtail.webp";
-const mainURL2 = "../src/assets/putni/mainPage/wagtail2.webp";
-const audioLink = "../src/assets/putni/putns1/audio.mp3";
+const mainURL2 = "/putni/mainPage/wagtail2.webp";
+const audioLink = "/putni/putns1/audio.mp3";
 
 
 </script>
@@ -134,7 +132,7 @@ img {
 }
 .backgroundClass{
   margin-top:0px;
-  background-image: url("../assets/putni/mainPage/mainIMG_cut_new2.webp");
+  background-image: url("/putni/mainPage/mainIMG_cut_new2.webp");
   background-color: #cccccc; 
   height: 100%;
   width:100%;
@@ -199,7 +197,7 @@ p, span, a{
   border: 2px solid var(--gray-l);
   border-radius: 0.5em;
   background-color:transparent;
-  background-image: url("../assets/putni/mainPage/mainPage.webp");
+  background-image: url("/putni/mainPage/mainPage.webp");
   width:100%;
 }
 

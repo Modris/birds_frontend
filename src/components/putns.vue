@@ -179,7 +179,7 @@ import Details from  '../components/Details.vue'
 
 const route = useRoute();
 const birdId = route.params.id;
-import jsonData from  "../assets/putni/source/source_putnsAllCompressed.json";
+import jsonData from  "../assets/source/source_putnsAllCompressed.json";
 
 
 
