@@ -84,7 +84,6 @@ let itemList = reactive({
 let itemSearched = ref(itemList);
 
 function searchTextUpdated(){
-    console.log(searchText.value)
     if(searchText.value === ''){
         return itemSearched = itemList;
     } else { 

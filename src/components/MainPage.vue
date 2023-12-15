@@ -1,5 +1,5 @@
 <template>
-<div :key="$route.params.id"> 
+<div class="parent1" :key="$route.params.id"> 
   <article class="backgroundClass">
     <br>
   <h1 class="mainH1"> Zini putnu? 🤔  </h1>
@@ -18,7 +18,7 @@
   <picture>
     <source  media="(max-width: 500px)" width="450" height="300" :srcset="mainURL2" decoding="async"  />
     <source  media="(min-width: 501px)" width="600" height="400" :srcset="mainURL2" decoding="async"/>
-    <img />
+    <img alt="Main Image"/>
   </picture>
   <br>
     <span>  
@@ -117,6 +117,9 @@ const audioLink = "/putni/putns1/audio.mp3";
 </script>
 
 <style scoped> 
+.parent1{
+  overflow:hidden;
+}
 .bolded{
   font-weight:bold;
 }

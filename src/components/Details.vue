@@ -19,18 +19,44 @@ const route = useRoute();
 const birdId = route.params.id;
 const listItems = ref({});
 
+/*
 async function getData() {
     try{
-  const res = await fetch('http://localhost:8080/details/birds/'+birdId);
+ // const res = await fetch('http://localhost:8080/details/birds/'+birdId);
+ const res = await fetch('https://birds-backend.fly.dev/details/birds/'+birdId);
   const finalRes = await res.json();
   listItems.value = finalRes;
     } catch (error){
         // error not yet handled.
+        console.log("Error fetching data from the backend "+error);
     }
     
 }
+// This only fetched once.
+getData(); */
 
-getData();
+const retry = (fn, retriesLeft = 5, interval = 1000) => {
+  return new Promise((resolve, reject) => {
+    fn()
+      .then(resolve)
+      .catch(error => {
+        setTimeout(() => {
+          if (retriesLeft === 1) {
+            // reject('maximum retries exceeded');
+            reject(error);
+            return;
+          }
+          // Passing on "reject" is the important part
+          retry(fn, retriesLeft - 1, interval).then(resolve, reject);
+        }, interval);
+      });
+  });
+};
+
+retry(() => fetch('https://birds-backend.fly.dev/details/birds/'+birdId))
+  .then(response => response.json())
+  .then(json =>  listItems.value = json)
+  .catch(error => console.log(error));
 </script>
 
 <style>

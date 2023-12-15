@@ -29,3 +29,6 @@ coverage
 .bak
 *.bak
 *.txt.bak
+
+*.toml
+*.toml.bak
