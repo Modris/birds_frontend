@@ -1,20 +1,18 @@
 <template>
 
-  <div class="main-container">
-    <div> <Navbar /> </div>
-    
+
+<main> 
+  <div class="app-container"> 
+    <Navbar />
     <div class="content"> 
       <transition name="fade">
-        <router-view :key="$route.params.id"/>
+      <router-view  :key="$route.params.id"/>
       </transition>
-    </div>
+   </div>
+    <Footer />
 
-    <div> 
-       <Footer class="footer" />
-    </div>
-    
   </div>
-
+</main>
 </template>
 
 <script setup>
@@ -24,16 +22,16 @@ import Footer from './components/Footer.vue'
 </script>
 
 <style>
-.main-container {
-   display:flex;
-   flex-direction: column;
-   min-height: 100vh;
-}
-.footer{
-  margin-top: auto;
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 .content{
-  flex-grow: 1;
+  flex-grow:1;
+  padding-bottom:30px;
+
 }
 .fade-enter-active, .fade-leave-active {
   transition-property: opacity;

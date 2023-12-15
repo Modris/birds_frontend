@@ -1,5 +1,5 @@
 <template>
-  <div :key="$route.params.id"> 
+  <div class="parent1" :key="$route.params.id"> 
 <br> 
 
   <br> 
@@ -54,19 +54,19 @@
 
 <!-- Main.webp img v-ifs...-->
 <picture v-if="birdId == 23 || birdId == 39">
-  <source  media="(max-width: 500px)" width="360" height="450" :srcset="mainURL" decoding="async"/>
+  <source  media="(max-width: 500px)" width="360" height="450" :srcset="mainURLMedium" decoding="async"/>
   <source  media="(min-width: 501px)" width="600" height="400" :srcset="mainURL" decoding="async"/>
-  <img />
+  <img  alt="Main Image"/>
 </picture>
 <picture v-else-if="birdId == 37">
-  <source  media="(max-width: 500px)" width="450" height="300" :srcset="mainURL" decoding="async"/>
+  <source  media="(max-width: 500px)" width="450" height="300" :srcset="mainURLMedium" decoding="async"/>
   <source  media="(min-width: 501px)" width="600" height="400" :srcset="mainURL" decoding="async"/>
-  <img />
+  <img   alt="Main Image"/>
 </picture>
 <picture v-else>
-  <source  media="(max-width: 500px)" width="450" height="360" :srcset="mainURL" decoding="async"/>
+  <source  media="(max-width: 500px)" width="450" height="360" :srcset="mainURLMedium" decoding="async"/>
   <source  media="(min-width: 501px)" width="600" height="400" :srcset="mainURL" decoding="async"/>
-  <img />
+  <img  alt="Main Image"/>
 </picture>
 
 <br>
@@ -98,21 +98,17 @@
   </div>
 
 <!-- 1.webp v-ifs...-->
-  <picture v-if="birdId == 23">
-  <source  media="(max-width: 500px)" width="360" height="450" :srcset="firstURL" decoding="async" loading="lazy" />
-  <source  media="(min-width: 501px)" width="600" height="400" :srcset="firstURL" decoding="async" loading="lazy"/>
-  <img />
-  </picture>
-  <picture v-else-if="birdId==26 || birdId == 36" >
-  <source  media="(max-width: 500px)" width="300" height="450" :srcset="firstURL" decoding="async" loading="lazy" />
+
+  <picture v-if="birdId==26" >
+  <source  media="(max-width: 500px)" width="300" height="450" :srcset="firstURLMedium" decoding="async" loading="lazy" />
   <source  media="(min-width: 501px)" width="400" height="600" :srcset="firstURL" decoding="async" loading="lazy"/>
-  <img />
+  <img  alt="First Image"/>
   </picture>
 
   <picture v-else >
-  <source  media="(max-width: 500px)" width="450" height="360" :srcset="firstURL" decoding="async" loading="lazy" />
+  <source  media="(max-width: 500px)" width="450" height="360" :srcset="firstURLMedium" decoding="async" loading="lazy" />
   <source  media="(min-width: 501px)" width="600" height="400" :srcset="firstURL" decoding="async" loading="lazy"/>
-  <img />
+  <img  alt="First Image"/>
   </picture>
   <br>
   <span>  
@@ -126,9 +122,9 @@
 
 
   <picture>
-  <source  media="(max-width: 500px)" width="450" height="360" :srcset="secondURL" decoding="async" loading="lazy" />
+  <source  media="(max-width: 500px)" width="450" height="360" :srcset="secondURLMedium" decoding="async" loading="lazy" />
   <source  media="(min-width: 501px)" width="600" height="400" :srcset="secondURL" decoding="async" loading="lazy"/>
-  <img />
+  <img alt="Second Image"/>
   </picture>
   <br>
   <span>  
@@ -140,21 +136,15 @@
 <br>
 <!-- 3.wepb image v-ifs.. -->
 <picture v-if="birdId == 36">
-  <source  media="(max-width: 500px)" width="300" height="450" :srcset="thirdURL" decoding="async" loading="lazy" />
+  <source  media="(max-width: 500px)" width="300" height="450" :srcset="thirdURLMedium" decoding="async" loading="lazy" />
   <source  media="(min-width: 501px)" width="400" height="600" :srcset="thirdURL" decoding="async" loading="lazy"/>
-  <img />
-</picture>
-
-<picture v-else-if="birdId == 26">
-  <source  media="(max-width: 500px)" width="338" height="450" :srcset="thirdURL" decoding="async" loading="lazy" />
-  <source  media="(min-width: 501px)" width="600" height="400" :srcset="thirdURL" decoding="async" loading="lazy"/>
-  <img />
+  <img  alt="Third Image"/>
 </picture>
 
   <picture v-else >
-  <source  media="(max-width: 500px)" width="450" height="360" :srcset="thirdURL" decoding="async" loading="lazy" />
+  <source  media="(max-width: 500px)" width="450" height="360" :srcset="thirdURLMedium" decoding="async" loading="lazy" />
   <source  media="(min-width: 501px)" width="600" height="400" :srcset="thirdURL" decoding="async" loading="lazy"/>
-  <img />
+  <img  alt="Third Image"/>
 </picture>
 
 <br>
@@ -165,7 +155,7 @@
        {{ jsonDynamic[3]['Country'] }}
   </span>
 
-  <br> 
+  <br>
 </div><!-- end of  <div :key="$route.params.id"> -->
 </template>
 
@@ -179,7 +169,7 @@ import Details from  '../components/Details.vue'
 
 const route = useRoute();
 const birdId = route.params.id;
-import jsonData from  "../assets/putni/source/source_putnsAllCompressed.json";
+import jsonData from  "../assets/source/source_putnsAllCompressed.json";
 
 
 
@@ -190,14 +180,27 @@ let mainURL = "";
 let firstURL = "";
 let secondURL = "";
 let thirdURL = "";
+
+var mainURLMedium =  "";
+var firstURLMedium =  "";
+var secondURLMedium =  "";
+var thirdURLMedium =  "";
+
 let received = false;
-function handleImageFromChild(childAudioLink, childMainURL, childFirstURL, childSecondURL, 
-        childThirdURL){
+function handleImageFromChild(childAudioLink, childMainURL, childFirstURL, childSecondURL, childThirdURL
+    ,childMainURLMedium,childFirstURLMedium,childSecondURLMedium,childThirdURLMedium){
   audioLink += childAudioLink;
   mainURL += childMainURL;
   firstURL += childFirstURL;
   secondURL +=childSecondURL;
   thirdURL += childThirdURL;
+
+  mainURLMedium += childMainURLMedium;
+  firstURLMedium += childFirstURLMedium;
+  secondURLMedium +=childSecondURLMedium;
+  thirdURLMedium += childThirdURLMedium;
+
+
   received = true; 
 }
 
@@ -219,7 +222,9 @@ let nextPage = "/putns/"+next
 
 async function getData() {
     try{
-  const res = await fetch('http://localhost:8080/birds/'+birdId);
+  //const res = await fetch('http://localhost:8080/birds/'+birdId);
+  const res = await fetch('https://birds-backend.fly.dev/birds/'+birdId);
+
   const finalRes = await res.json();
   listItems.value = finalRes;
     } catch (error){
@@ -228,11 +233,42 @@ async function getData() {
     
 }
 
-getData();
+getData(); 
+/*
+const retry = async (fn, retriesLeft = 5, interval = 1000) => {
+  return new Promise(async (resolve, reject) => {
+    try {
+      const result = await fn();
+      resolve(result);
+    } catch (error) {
+      setTimeout(async () => {
+        if (retriesLeft === 1) {
+          reject(error);
+          return;
+        }
+        try {
+          const result = await retry(fn, retriesLeft - 1, interval);
+          resolve(result);
+        } catch (retryError) {
+          reject(retryError);
+        }
+      }, interval);
+    }
+  });
+};
 
+retry(() => fetch('https://birds-backend.fly.dev/birds/'+birdId))
+  .then(response => response.json())
+  .then(json =>  listItems.value = json)
+  .catch(error => console.log(error));
+*/
 </script>
 
 <style>
+
+.parent1{
+  overflow:hidden;
+}
 
 .navButtons{
   font-size:20px;

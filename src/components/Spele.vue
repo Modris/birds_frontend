@@ -1,8 +1,8 @@
 <template>
-
+<div class="parent1"> 
   <br>
   <h1> Samaisam atmiņas kartes </h1>
-  <span class="fontSize"> 40 sugas. 240 bildes. </span>
+  <span class="fontSize"> 40 sugas. 160 bildes. </span>
   
   <Boxes @someEvent="callback" />
   <br> <br> 
@@ -11,7 +11,7 @@
     <div class = "spanAll"> 
       <ul class="balls" ref="parent" >
         <li v-for="start in balls" :key="start.text">
-          <img class="img" :src="start.image"/>
+          <img class="img" :src="start.image" decoding="async"/>
         </li>
       </ul>
     </div>
@@ -56,43 +56,43 @@
   
   <!-- Some images are stretched unfortunately so this is why so many ifs...-->
   <picture v-if="balls[0].pic == 'main' && (balls[0].id == '23' || balls[0].id == '39')">
-    <source  media="(max-width: 500px)" width="360" height="450" :srcset="balls[0].guessImage" decoding="async"/>
+    <source  media="(max-width: 500px)" width="360" height="450" :srcset="balls[0].guessImageMedium" decoding="async"/>
     <source  media="(min-width: 501px)" width="600" height="400" :srcset="balls[0].guessImage" decoding="async"/>
-    <img />
+    <img alt="Main Image"/>
   </picture>
   <picture v-else-if="balls[0].pic == 'main' && balls[0].id == '37'">
-    <source  media="(max-width: 500px)" width="450" height="300" :srcset="balls[0].guessImage" decoding="async"/>
+    <source  media="(max-width: 500px)" width="450" height="300" :srcset="balls[0].guessImageMedium" decoding="async"/>
     <source  media="(min-width: 501px)" width="600" height="400" :srcset="balls[0].guessImage" decoding="async"/>
-    <img />
+    <img alt="Main Image"/>
   </picture>
   
   <!-- 1st image v-ifs...-->
   <picture v-else-if="balls[0].pic == '1' && balls[0].id == '23'">
-    <source  media="(max-width: 500px)" width="360" height="450" :srcset="balls[0].guessImage" decoding="async" loading="lazy" />
+    <source  media="(max-width: 500px)" width="360" height="450" :srcset="balls[0].guessImageMedium" decoding="async" loading="lazy" />
     <source  media="(min-width: 501px)" width="600" height="400" :srcset="balls[0].guessImage" decoding="async" loading="lazy"/>
-    <img />
+    <img alt="Main Image"/>
    </picture>
    <picture v-else-if="balls[0].pic == '1' && (balls[0].id == '26' || balls[0].id == '36')">
-    <source  media="(max-width: 500px)" width="300" height="450" :srcset="balls[0].guessImage" decoding="async" loading="lazy" />
+    <source  media="(max-width: 500px)" width="300" height="450" :srcset="balls[0].guessImageMedium" decoding="async" loading="lazy" />
     <source  media="(min-width: 501px)" width="400" height="600" :srcset="balls[0].guessImage" decoding="async" loading="lazy"/>
-    <img />
+    <img alt="Main Image"/>
    </picture>
    <!-- 3rd image v-ifs...-->
    <picture v-else-if="balls[0].pic == '3' && balls[0].id == '36'">
-    <source  media="(max-width: 500px)" width="300" height="450" :srcset="balls[0].guessImage" decoding="async" loading="lazy" />
+    <source  media="(max-width: 500px)" width="300" height="450" :srcset="balls[0].guessImageMedium" decoding="async" loading="lazy" />
     <source  media="(min-width: 501px)" width="400" height="600" :srcset="balls[0].guessImage" decoding="async" loading="lazy"/>
-    <img />
+    <img alt="Main Image"/>
    </picture>
    <picture v-else-if="balls[0].pic == '3' && balls[0].id == '26'">
-    <source  media="(max-width: 500px)" width="338" height="450" :srcset="balls[0].guessImage" decoding="async" loading="lazy" />
+    <source  media="(max-width: 500px)" width="338" height="450" :srcset="balls[0].guessImageMedium" decoding="async" loading="lazy" />
     <source  media="(min-width: 501px)" width="600" height="400" :srcset="balls[0].guessImage" decoding="async" loading="lazy"/>
-    <img />
+    <img alt="Main Image"/>
    </picture>
   
   <picture v-else>
-    <source  media="(max-width: 500px)" width="450" height="360" :srcset="balls[0].guessImage" decoding="async"/>
+    <source  media="(max-width: 500px)" width="450" height="360" :srcset="balls[0].guessImageMedium" decoding="async"/>
     <source  media="(min-width: 501px)" width="600" height="400" :srcset="balls[0].guessImage" decoding="async"/>
-    <img />
+    <img alt="Main Image"/>
   </picture>
   <br> 
   
@@ -110,7 +110,7 @@
   
   
   
-  
+  </div>
   </template>
   
   
@@ -122,7 +122,7 @@
   import { ref, onMounted, watchEffect } from "vue"
   import { useAutoAnimate } from '@formkit/auto-animate/vue'
   import Boxes from "../components/Boxes.vue"
-  import jsonData from  "../assets/putni/source/source_putnsAllCompressed.json";
+  import jsonData from  "../assets/source/source_putnsAllCompressed.json";
   
   
   
@@ -182,13 +182,14 @@
                         21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40]);
   var randImages = ref([0,1,2,3,0,1,2,3,0,1,2,3,0,1,2,3,0,1,2,3]);
   var guessImageCooked = ref('');
+  var guessImageCookedMedium = ref('');
   var id = ref(0);
   const balls = ref([
-    {order:1, image: '../src/assets/putni/mainPage/card1.webp', text: '0', guessImage: '',pic:'', id: '', source:{},answer: '', reveal:false},
-    { order:2,image: '../src/assets/putni/mainPage/card2.webp', text: '1', guessImage: '',pic:'', id: '', source:{}, answer: '', reveal:false },
-    { order:3,image: '../src/assets/putni/mainPage/card3.webp', text: '2', guessImage: '',pic:'', id: '', source:{}, answer: '', reveal:false },
-    {order:4, image: '../src/assets/putni/mainPage/card4.webp', text: '3', guessImage: '',pic:'', id: '', source:{}, answer: '', reveal:false },
-   {order:5, image: '../src/assets/putni/mainPage/card5.webp', text: '4',  guessImage: '',pic:'', id: '', source:{}, answer: '', reveal:false},
+    {order:1, image: '/putni/mainPage/card1.webp', text: '0',guessImageMedium: '', guessImage: '',pic:'', id: '', source:{},answer: '', reveal:false},
+    { order:2,image: '/putni/mainPage/card2.webp', text: '1',guessImageMedium: '',  guessImage: '',pic:'', id: '', source:{}, answer: '', reveal:false },
+    { order:3,image: '/putni/mainPage/card3.webp', text: '2',guessImageMedium: '',  guessImage: '',pic:'', id: '', source:{}, answer: '', reveal:false },
+    {order:4, image: '/putni/mainPage/card4.webp', text: '3',guessImageMedium: '',  guessImage: '',pic:'', id: '', source:{}, answer: '', reveal:false },
+   {order:5, image: '/putni/mainPage/card5.webp', text: '4', guessImageMedium: '',  guessImage: '',pic:'', id: '', source:{}, answer: '', reveal:false},
   ])
   
   
@@ -272,13 +273,15 @@
         chosenOne[start] = ''+randImages.value[start];
       } 
       
-      balls.value[start].image = "../src/assets/putni/mainPage/card"+(start+1)+"_new.webp"; /* reset images to default */
+      balls.value[start].image = "/putni/mainPage/card"+(start+1)+"_new.webp"; /* reset images to default */
       
       
       balls.value[start].reveal = false; /* Reset reveals to false. */
   
-      guessImageCooked = ref("../src/assets/putni/putns"+ranNums.value[i]+"/"+chosenOne[start]+"_resize_large.webp");
+      guessImageCooked = ref("/putni/putns"+ranNums.value[i]+"/"+chosenOne[start]+"_resize_large.webp");
+      guessImageCookedMedium = ref("/putni/putns"+ranNums.value[i]+"/"+chosenOne[start]+"_resize_medium.webp");
       balls.value[start].guessImage = guessImageCooked.value;
+      balls.value[start].guessImageMedium = guessImageCookedMedium.value;
       balls.value[start].id = ''+ranNums.value[i];
       balls.value[start].pic = chosenOne[start];
       balls.value[start].source = {test: "test"};
@@ -299,7 +302,6 @@
     if(hint != null && balls.value[0] != null && hint.value.length <= balls.value[0].answer.length)
     var start = hint.value.length;
     var answer = balls.value[0].answer;
-    console.log(answer)
     hint.value = hint.value+answer.charAt(start);
    /* userGuess.value = hint.value; I didn't like the functionality of this.*/
   };
@@ -308,8 +310,7 @@
     show.value = !show.value;
     if(show.value == true){
       balls.value[0].reveal = true;
-      balls.value[0].image = balls.value[0].guessImage;
-      victoryOrDefeat.value = true;
+      balls.value[0].image = balls.value[0].guessImageMedium;
     }
    
   }
@@ -319,7 +320,9 @@
   
   
   <style scoped>
-  
+  .parent1{
+  overflow:hidden;
+}
   .flexbox{
    display:flex;
    flex-direction: row;
