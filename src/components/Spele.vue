@@ -42,10 +42,10 @@
     </article>
   <div class="containerTwo">
     <div v-if="birdNames[+balls[0].id].name != null" class="dropdownCorrect"  ref="dropdown">
-      <strong class="dropdown-label" @click="toggleShow">
+      <button class="dropdown-label" @click="toggleShow">
       Atbilde <span v-if="balls[0].reveal == false"> 🚫</span> 
             <span v-if="balls[0].reveal == true"> ✔️</span> 
-      </strong>
+      </button>
       
       <p class="dropdown-contentCorrect"  v-if="show"> {{ birdNames[+balls[0].id].name }} </p>
     </div>
@@ -352,7 +352,14 @@
     /*background-image: url("../assets/putni/mainPage/mainPage.webp"); */
     background: linear-gradient(to right, #ff8177 0%, #ff867a 0%, #ff8c7f 21%, #f99185 52%, #cf556c 78%, #b12a5b 100%);
   }
-  
+  .dropdown-label{
+    width:100%;
+    display:border-box;
+    background:transparent;
+    border:none;
+    font-weight:600;
+    font-size:20px;
+  }
   .dropdownCorrect{
     font-size:20px;
     border: 2px solid var(--gray-l);
@@ -395,12 +402,12 @@
     box-sizing: border-box;
     color: #ffffff;
     display: block;
-    height: 40px;
-    font-size: 20px;
+    height: 50px;
+    width: 140px;
+    font-size: 26px;
     font-weight: 600;
-    padding: 4px;
     text-decoration: none;
-    width: 125px;
+
   }
   
   .bn40 {
@@ -408,8 +415,8 @@
     background: radial-gradient(128px at 2.9% 15%, rgb(191, 224, 251) 0%, rgb(232, 233, 251) 25.8%, rgb(252, 239, 250) 50.8%, rgb(234, 251, 251) 77.6%, rgb(240, 251, 244) 100.7%);
     border-radius: 100%;
     color: #004953;
-    width: 50px;
-    height: 50px;
+    width: 56px;
+    height: 56px;
     font-size: 32px;
     text-decoration: none;
   }
@@ -491,14 +498,14 @@
    column-gap:0px;
   }
   
-  
   .angry-grid {
     background-color: white;
      display: grid; 
-     grid-template-columns: 29% 65% ;
-     grid-template-rows: 20% 20%;
+     grid-template-columns: 0.7fr 2fr;
+     grid-template-rows: 1fr 0.2fr;
      row-gap:150px;
      justify-content: center;
+     margin-bottom:0px;
   }
   .img{
     width:80px;
@@ -507,26 +514,30 @@
   
   @media (min-width:500px){
     .angry-grid{
-      grid-template-columns: 29% 45% ;
+      grid-template-columns: 0.5fr 0.4fr;
+      .bottomLeft{
+        margin-left:50px;
+      }
       .bottomRight{
-      margin-right:-55px;
+        margin-right:50px;
+      }
+      .img{
+      width:100px;
+      height:110px;
     }
     }
-
-   
   }
+  
   @media (min-width:590px){
     .angry-grid{
-      grid-template-columns: 29% 40% ;
+      grid-template-columns: 0.4fr 0.4fr;
     }
-    .img{
-    width:100px;
-    height:110px;
+
   }
-  }
-  @media (min-width:704px){
+  
+  @media (min-width:670px){
     .angry-grid{
-      grid-template-columns: 29% 35% ;
+      grid-template-columns: 0.3fr 0.4fr;
       .bottomRight{
       margin-right:-50px;
     }
@@ -535,11 +546,12 @@
       grid-template-columns: 35% 35% ;
     }
   }
+  
   @media (min-width:860px){
     .angry-grid{
-      grid-template-columns: 29% 28%;
+      grid-template-columns: 0.25fr 0.3fr;
       .bottomRight{
-      margin-right:10px;
+      margin-right:-50px;
     }
     }
     .containerOne{
@@ -547,12 +559,22 @@
     }
  
   }
+
   @media (min-width:1000px){
     .angry-grid{
-      grid-template-columns: 29% 13%;
+      grid-template-columns: 0.17fr 0.3fr;
     }
     .containerOne{
-      grid-template-columns: 25% 25%; /* 25% 25% */
+      grid-template-columns: 25% 25%; 
+      overflow:hidden;
+    }
+  }
+  @media (min-width:1130px){
+    .angry-grid{
+      grid-template-columns: 0.12fr 0.3fr;
+    }
+    .containerOne{
+      grid-template-columns: 25% 25%; 
       overflow:hidden;
     }
   }
@@ -575,6 +597,7 @@
    z-index:6;
    align-self:end;
    margin-left:0px;
+   margin-bottom:20px;
   }
   .bottomRight{
     grid-area:2/2 /2/2;
@@ -583,4 +606,5 @@
     align-self:start;
     margin-right:-100px;
   }
+  
   </style>
