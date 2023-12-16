@@ -5,7 +5,7 @@
   <span class="fontSize"> 40 sugas. 160 bildes. </span>
   
   <Boxes @someEvent="callback" />
-  <br> <br> 
+  <br> <br> <br>
   
   <article class="angry-grid"  >
     <div class = "spanAll"> 
@@ -40,15 +40,15 @@
   
      </div>
     </article>
-  
   <div class="containerTwo">
-    <div v-if="birdNames[+balls[0].id].name != null" class = "dropdown" ref="dropdown">
+    <div v-if="birdNames[+balls[0].id].name != null" class="dropdownCorrect"  ref="dropdown">
       <strong class="dropdown-label" @click="toggleShow">
-      Atbilde 🚫
+      Atbilde <span v-if="balls[0].reveal == false"> 🚫</span> 
+            <span v-if="balls[0].reveal == true"> ✔️</span> 
       </strong>
-      <p class="dropdown-content" v-if="show"> {{ birdNames[+balls[0].id].name }} </p>
+      
+      <p class="dropdown-contentCorrect"  v-if="show"> {{ birdNames[+balls[0].id].name }} </p>
     </div>
-  
   </div>
   
   
@@ -353,6 +353,12 @@
     background: linear-gradient(to right, #ff8177 0%, #ff867a 0%, #ff8c7f 21%, #f99185 52%, #cf556c 78%, #b12a5b 100%);
   }
   
+  .dropdownCorrect{
+    font-size:20px;
+    border: 2px solid var(--gray-l);
+    border-radius: 0.5em;
+    background: linear-gradient(to right, rgb(52, 232, 158), rgb(15, 52, 67));
+  }
   .dropdown strong {
     display: block;
     cursor: pointer;
@@ -363,6 +369,9 @@
     background-color:red;
   }
   
+  .dropdown-contentCorrect{
+    background-color:green;
+  }
   
   .containerOne{
     display:grid;

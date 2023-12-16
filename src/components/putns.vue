@@ -20,7 +20,7 @@
 
   <article class = "gridLayout"> 
     <div class="gridLayout child" v-if="received === true"> 
-        <audio controls>
+        <audio controls class="test">
         <source :src="audioLink" type="audio/mpeg">
       Your browser does not support the audio element.
       <source> 
@@ -273,14 +273,17 @@ retry(() => fetch('https://birds-backend.fly.dev/birds/'+birdId))
 .navButtons{
   font-size:20px;
 }
-
+.test{
+  width:280px;
+  height:40px;
+}
 .gridLayout{
   display:grid;
   grid-template-columns: 250px 35px;
   grid-template-rows: 50px;
   justify-content: center;
   align-items:center;
-  column-gap:0px;
+  column-gap:10px;
   row-gap:0px;
 }
 
