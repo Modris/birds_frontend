@@ -4,7 +4,6 @@ import Putns from '../components/putns.vue'
 import Saraksts from  '../components/Saraksts.vue'
 import Spele from  '../components/Spele.vue'
 
-
 const routes = [
     {
         path: "/",

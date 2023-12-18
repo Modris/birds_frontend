@@ -45,49 +45,54 @@
 
 
     <br> 
-    <div class="boxStyle"> 
-      <div class="boxStyle child">
-        <div> <br> </div>
-        <span> Mājaslapas mērķis ir veicināt interesi Latvijas putnu iepazīšanā. </span>
-        <p> Vai tu Zini Latvijas sastopamākos putnus? </p> <router-link to="/saraksts">Iepazīsti 40 putnu sugas.</router-link>
-        <p> Pārbaudi savas zināšanas atmiņas spēlē. </p>
-      </div>
-    </div>
-  <br> 
-    <div class="boxStyle"> 
-        <div class="boxStyle child">
-          <p>  Mājaslapā izmantotā informācija nāk no   </p>
-            <a href="https://www.lob.lv/wp-content/uploads/2020/05/Mans_pirmais_putnu_noteicejs_A6_40_sugas_atverumi.pdf">"Mans Pirmais Putnu Noteicējs. 40 sugas."</a>
-      
+    <div class = "boxy">
+        <div class="filler"> &nbsp;  </div>
+        <div class="boxy child">
+            <h1> Mājaslapas mērķis</h1>
+            <span class="spanPad"> Mājaslapas mērķis ir veicināt interesi Latvijas putnu iepazīšanā. </span>
+            <span class="spanPad"> Vai tu <b> zini</b> Latvijas sastopamākos <b> putnus?</b> 
+            </span> 
             
-          <span> vai </span>
-            <a href="https://www.lob.lv/noderigi/materiali/">www.lob.lv/noderigi/materiali</a>
-          <span> Ar vairākām lejuplādes opcijām.</span>
-            <span> <br> </span>
-
-        </div>
-    </div>
-    <br> 
-    <div class="boxStyle"> 
-        <div class="boxStyle child">
-          <h1>Vairāk informācijas</h1>
-
-          <span> Vairāk informācija par putniem: <a href="http://www.putni.lv/"> putni.lv</a> </span> 
-          <br>
-          <span> Visas Latvijas putnu sugas: <a href="https://latvijasputni.lv/lv/putnu-saraksts.html"> latvjasputni.lv</a>  </span>  
-          <br> 
-          <span> Dabas Dati Putnu Novērojumi: <a href="https://dabasdati.lv/"> dabasdati.lv</a> </span> 
-          <br>
-          <span class="bolded">  Latvijas Ornitoloģijas biedrība: <a href="https://www.lob.lv/">lob.lv</a> </span> 
-          <br>
-          <br> 
-          <span> Angliski: Latvijas sastopamie putni: <a href="https://ebird.org/region/LV?yr=all&m=&rank=hc"> ebird.org </a></span>
-        <br> 
-        <span> Angliski: Novēroto Putnu Skaits Latvijā (217219): <a href="https://www.gbif.org/occurrence/taxonomy?basis_of_record=HUMAN_OBSERVATION&basis_of_record=MACHINE_OBSERVATION&country=LV&taxon_key=212"> gbif.org</a></span>
-        <span> <br> </span>
-      </div> 
-        <div>  <br> </div>
+            <span class="spanPad"> 
+              <router-link to="/saraksts"><a> Iepazīsti 40 putnu sugas.</a></router-link>
+            </span>
+            <span class="spanPad"> Pārbaudi savas zināšanas
+              <router-link to="/spele"> <a> atmiņas spēlē! </a></router-link>
+            </span>
+           <span class="spanPad"> </span>
+         </div>     
+         <div class="filler"> </div>
       </div>
+    
+
+
+  <br> 
+      <div class = "boxy">
+        <div class="filler"> &nbsp;  </div>
+        <div class="boxy child">
+            <h1>Noderīgas mājaslapas</h1>
+       
+       
+               <a href="https://www.lob.lv/wp-content/uploads/2020/05/Mans_pirmais_putnu_noteicejs_A6_40_sugas_atverumi.pdf">"Mans Pirmais Putnu Noteicējs. 40 sugas."</a>
+   
+              <span class="spanPad"> Vairāk informācija par putniem: <a href="http://www.putni.lv/"> putni.lv</a> </span> 
+        
+            <span class="spanPad"> Visas Latvijas putnu sugas: <a href="https://latvijasputni.lv/lv/putnu-saraksts.html"> latvjasputni.lv</a>  </span>  
+             
+            <span class="spanPad"> Dabas Dati Putnu Novērojumi: <a href="https://dabasdati.lv/"> dabasdati.lv</a> </span> 
+         
+            <span class="spanPad bolded">  Latvijas Ornitoloģijas biedrība: <a href="https://www.lob.lv/">lob.lv</a> </span> 
+          
+            <span class="spanPad"> Angliski: Latvijas sastopamie putni: <a href="https://ebird.org/region/LV?yr=all&m=&rank=hc"> ebird.org </a></span>
+           
+            <span class="spanPad"> Angliski: Novēroto Putnu Skaits Latvijā (217219): <a href="https://www.gbif.org/occurrence/taxonomy?basis_of_record=HUMAN_OBSERVATION&basis_of_record=MACHINE_OBSERVATION&country=LV&taxon_key=212"> gbif.org</a></span>
+            <span> <br> </span>
+         </div>    
+
+         <div class="filler"> </div>
+      </div>
+
+    <br> 
   </article>
 
 
@@ -166,19 +171,27 @@ p, span, a{
   }
 }
 
-.boxStyle{
-  display:flex;
-  justify-content: center;
-  align-items:center;
-  text-align:center;
-  flex-direction: column;
+.boxy {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
 }
-.boxStyle .child{
-  border-radius: 15px;
-  border-style: dotted;
-  border-color: rgb(7, 100, 52);
-  padding:6px;
+
+.boxy .child {
+    flex-direction: column;
+    border-radius: 15px;
+    border-style: double;
+    background: radial-gradient(328px at 2.9% 15%, rgb(191, 224, 251) 0%, rgb(232, 233, 251) 25.8%, rgb(252, 239, 250) 50.8%, rgb(234, 251, 251) 77.6%, rgb(240, 251, 244) 100.7%);
+
+
+    padding: 6px;
+    font-size: 20px;
 }
+
+.filler {
+    width: 5%;
+}
+
 .containerTwo{
   display:grid;
   grid-template-columns: 80%;
@@ -212,5 +225,18 @@ p, span, a{
   font-weight:bold;
   background-color:transparent;
 }
+.dropdown-label{
+  color:yellow;
+}
 
+.spanPad{
+  padding:6px;
+}
+.spanPadBig a{
+  font-size:26px;
+  font-weight:300;
+}
+.spanPadBig {
+  padding:6px;
+}
 </style>
