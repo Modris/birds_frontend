@@ -219,7 +219,7 @@ if(next >=40){
 }
 let nextPage = "/putns/"+next
 
-
+/*
 async function getData() {
     try{
   //const res = await fetch('http://localhost:8080/birds/'+birdId);
@@ -234,7 +234,8 @@ async function getData() {
 }
 
 getData(); 
-/*
+*/
+
 const retry = async (fn, retriesLeft = 5, interval = 1000) => {
   return new Promise(async (resolve, reject) => {
     try {
@@ -256,12 +257,12 @@ const retry = async (fn, retriesLeft = 5, interval = 1000) => {
     }
   });
 };
-
-retry(() => fetch('https://birds-backend.fly.dev/birds/'+birdId))
+/* retry(() => fetch('https://birds-backend.fly.dev/birds/'+birdId)) */ 
+retry(() => fetch('http://localhost:8080/birds/'+birdId))
   .then(response => response.json())
   .then(json =>  listItems.value = json)
   .catch(error => console.log(error));
-*/
+
 </script>
 
 <style>

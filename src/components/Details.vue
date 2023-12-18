@@ -52,8 +52,8 @@ const retry = (fn, retriesLeft = 5, interval = 1000) => {
       });
   });
 };
-
-retry(() => fetch('https://birds-backend.fly.dev/details/birds/'+birdId))
+/* retry(() => fetch('https://birds-backend.fly.dev/details/birds/'+birdId)) */ 
+retry(() => fetch('http://localhost:8080/details/birds/'+birdId))
   .then(response => response.json())
   .then(json =>  listItems.value = json)
   .catch(error => console.log(error));
