@@ -20,6 +20,6 @@ COPY default.conf /etc/nginx/conf.d/default.conf
 COPY --from=build-stage /vue_app/dist /usr/share/nginx/html
 
 
-EXPOSE 80
+EXPOSE 9090
 
 CMD ["nginx", "-g", "daemon off;"]

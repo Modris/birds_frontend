@@ -120,7 +120,7 @@
   
   <br> 
 
-
+<!-- 2nd wepb image v-ifs.. -->
   <picture>
   <source  media="(max-width: 500px)" width="450" height="360" :srcset="secondURLMedium" decoding="async" loading="lazy" />
   <source  media="(min-width: 501px)" width="600" height="400" :srcset="secondURL" decoding="async" loading="lazy"/>
@@ -137,6 +137,11 @@
 <!-- 3.wepb image v-ifs.. -->
 <picture v-if="birdId == 36">
   <source  media="(max-width: 500px)" width="300" height="450" :srcset="thirdURLMedium" decoding="async" loading="lazy" />
+  <source  media="(min-width: 501px)" width="400" height="600" :srcset="thirdURL" decoding="async" loading="lazy"/>
+  <img  alt="Third Image"/>
+</picture>
+<picture v-else-if="birdId == 30" >
+  <source  media="(max-width: 500px)" width="450" height="400" :srcset="thirdURLMedium" decoding="async" loading="lazy" />
   <source  media="(min-width: 501px)" width="400" height="600" :srcset="thirdURL" decoding="async" loading="lazy"/>
   <img  alt="Third Image"/>
 </picture>
@@ -258,7 +263,7 @@ const retry = async (fn, retriesLeft = 5, interval = 1000) => {
   });
 };
 /* retry(() => fetch('https://birds-backend.fly.dev/birds/'+birdId)) */ 
-retry(() => fetch('http://localhost:8080/birds/'+birdId))
+retry(() => fetch('https://ziniputnu.lv/api/birds/'+birdId))
   .then(response => response.json())
   .then(json =>  listItems.value = json)
   .catch(error => console.log(error));

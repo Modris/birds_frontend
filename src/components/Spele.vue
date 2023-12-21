@@ -83,9 +83,9 @@
     <source  media="(min-width: 501px)" width="400" height="600" :srcset="balls[0].guessImage" decoding="async" loading="lazy"/>
     <img alt="Main Image"/>
    </picture>
-   <picture v-else-if="balls[0].pic == '3' && balls[0].id == '26'">
-    <source  media="(max-width: 500px)" width="338" height="450" :srcset="balls[0].guessImageMedium" decoding="async" loading="lazy" />
-    <source  media="(min-width: 501px)" width="600" height="400" :srcset="balls[0].guessImage" decoding="async" loading="lazy"/>
+   <picture v-else-if="balls[0].pic == '3' && balls[0].id == '30'">
+    <source  media="(max-width: 500px)" width="450" height="400" :srcset="balls[0].guessImageMedium" decoding="async" loading="lazy" />
+    <source  media="(min-width: 501px)" width="400" height="600" :srcset="balls[0].guessImage" decoding="async" loading="lazy"/>
     <img alt="Main Image"/>
    </picture>
   
